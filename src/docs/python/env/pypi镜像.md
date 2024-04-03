@@ -1,0 +1,44 @@
+---
+title: pypi镜像
+date: 2023-07-29T08:21:13Z
+lastmod: 2023-08-05T08:55:52Z
+article: false
+order: 4
+---
+
+# pypi镜像
+
+### 镜像源
+
+- 清华：`https://pypi.tuna.tsinghua.edu.cn/simple`
+- 阿里云：`http://mirrors.aliyun.com/pypi/simple/`
+- 中国科技大学 `https://pypi.mirrors.ustc.edu.cn/simple/`
+- 华中理工大学：`http://pypi.hustunique.com/`
+- 山东理工大学：`http://pypi.sdutlinux.org/`
+- 豆瓣：`http://pypi.douban.com/simple/`
+
+### 文件修改
+
+#### Linux/Mac
+
+　　修改 `~/.pip/pip.conf` (没有就创建一个文件夹及文件。文件夹要加`.`，表示是隐藏文件夹)
+
+> 内容如下
+
+```bash
+[global]
+index-url = https://pypi.tuna.tsinghua.edu.cn/simple
+[install]
+trusted-host=mirrors.aliyun.com
+```
+
+#### windows
+
+　　直接在 user 目录中创建一个 pip 目录，如：`C:\Users\xx\pip`，新建文件`pip.ini`。内容同上。
+
+### 终端修改
+
+```bash
+pip config set global.index-url http://mirrors.aliyun.com/pypi/simple/ # 终端使用命令设置pip镜像
+pip install pip -U  # 升级pip包管理工具
+```

@@ -1,0 +1,23 @@
+{
+  "name": "docs",
+  "version": "2.0.0",
+  "description": "个人笔记",
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "docs:build": "vuepress-vite build src",
+    "docs:clean-dev": "vuepress-vite dev src --clean-cache",
+    "docs:dev": "vuepress-vite dev src",
+    "docs:update-package": "npx vp-update"
+  },
+  "devDependencies": {
+    "@vuepress/bundler-vite": "2.0.0-rc.9",
+    "vue": "^3.4.21",
+    "vuepress": "2.0.0-rc.9",
+    "vuepress-theme-hope": "2.0.0-rc.33"
+  },
+  "dependencies": {
+    "mathjax-full": "^3.2.2",
+    "vuepress-plugin-search-pro": "^2.0.0-rc.33"
+  }
+}
