@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup Node.js 20
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies and build
+      run: |
+        npm install
+        npm run docs:build
+
+    - name: Deploy
+      uses: easingthemes/ssh-deploy@v5.0.3
+      with:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PUBLIC_KEY }}
+          ARGS: "-rlgoDzvc -i --delete"
+          SOURCE: "src/.vuepress/dist/"
+          REMOTE_PORT: ${{ secrets.SERVER_SSH_PORT }}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USER }}
+          TARGET: ${{ secrets.SERVER_TARGET_PATH }}
