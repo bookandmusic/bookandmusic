@@ -132,7 +132,7 @@ nginx -c /path/to/your/nginx.conf
 
 ### 配置文件解析
 
-```conf
+```nginx
 # 定义Nginx运行的用户和用户组
 user www-data;
 # #nginx进程数，建议设置为等于CPU总核心数。
@@ -482,7 +482,7 @@ server {
 
 　　nginx提供了几种分配方式
 
-```conf
+```nginx
 #1.轮询（默认）
 每个请求按时间顺序逐一分配到不同的后端服务器，如果后端服务器 down 掉，能自动剔除。
 upstream django {

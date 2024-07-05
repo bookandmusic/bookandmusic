@@ -3,9 +3,48 @@ import { navbar } from "vuepress-theme-hope";
 export default navbar([
   "/",
   {
+    text: "博客",
+    icon: "blog",
+    prefix:"/category",
+    children: [
+      {
+        text: "Python",
+        link:"python/",
+      },
+      {
+        text: "Go",
+        link:"go/",
+      },
+      {
+        text: "数据库",
+        link:"数据库/",
+      },
+      {
+        text: "算法",
+        link:"算法/",
+      },
+      {
+        text: "Web开发",
+        link:"web开发/",
+      },
+      {
+        text: "网络",
+        link:"网络/",
+      },
+      {
+        text: "工具软件",
+        link:"工具软件/",
+      },
+      {
+        text: "系统操作",
+        link:"系统操作/",
+      },
+    ],
+  },
+  {
     text: "数据库",
     icon: "book",
-    prefix:"/docs/",
+    prefix:"/docs/database/",
     children: [
       {
         text: "MySQL",
@@ -28,19 +67,19 @@ export default navbar([
   {
     text: "Linux运维",
     icon: "book",
-    prefix:"/docs/",
+    prefix:"/docs/linux",
     children: [
       {
-        text: "Linux",
-        link:"linux/",
+        text: "Linux命令",
+        link:"command/",
       },
       {
-        text: "Ansible",
-        link:"ansible/",
+        text: "服务管理",
+        link:"service/",
       },
       {
-        text: "Docker",
-        link:"docker/",
+        text: "组件",
+        link:"components/",
       },
     ],
   },

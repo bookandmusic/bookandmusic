@@ -7,17 +7,10 @@ export const go = arraySidebar([
     children: [
       {
         text: "基础语法",
-        link: "base/"
+        collapsible: true,
+        prefix: "base/",
+        children: "structure"
       },
     ],
   }
 ]);
-
-
-export const go_base = arraySidebar([
-  {
-    text: "基础语法",
-    children: "structure",
-  }
-]);
-

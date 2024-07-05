@@ -8,32 +8,22 @@ export const docs = arraySidebar([
       {
         text: "Linux",
         icon: "/linux.svg",
-        link: "/docs/linux"
+        link: "/docs/linux/"
       },
       {
-        text: "MySQL",
+        text: "数据库",
         icon: "/mysql.svg",
-        link: "/docs/mysql"
-      },
-      {
-        text: "Ansible",
-        icon: "/ansible.svg",
-        link: "/docs/ansible"
-      },
-      {
-        text: "Docker",
-        icon: "/docker.svg",
-        link:"/docs/docker/",
+        link: "/docs/database/"
       },
       {
         text: "Go",
         icon: "/go.svg",
-        link: "/docs/go"
+        link: "/docs/go/"
       },
       {
         text: "Python",
         icon: "/python.svg",
-        link: "/docs/python"
+        link: "/docs/python/"
       },
       {
         text: "前端",

@@ -12,7 +12,7 @@ export default hopeTheme({
   },
   blog: {
     // avatar:"",
-    roundAvatar: true,
+    // roundAvatar: true,
   },
   iconAssets: "fontawesome-with-brands",
 
