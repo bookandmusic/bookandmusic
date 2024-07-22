@@ -44,6 +44,11 @@ export const linux = arraySidebar([
             collapsible: true,
             children: "structure",
           },
+          {
+            text: "Kubernetes",
+            icon:"/kubernetes.svg",
+            link: "Kubernetes",
+          },
         ],
       },
     ],
