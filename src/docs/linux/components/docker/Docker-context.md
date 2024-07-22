@@ -1,11 +1,13 @@
 ---
-title: Docker Context 连接远程节点
-category: 工具软件
+order: 4
+article: false
+title: Docker-context
+category: 容器
 tags:
   - Docker
   - Container
-date: 2024-07-03T08:05:39.000Z
-updated: 2024-07-12T01:57:05.000Z
+date: 2024-07-03T16:05:39.000Z
+updated: 2024-07-21T11:21:36.000Z
 ---
 在 Docker v19.03 版本之前，我们可以使用`DOCKER_HOST`​环境变量来配置和连接远程 Docker 主机，自从 Docker v19.03 版本开始，Docker 的命令行接口（CLI）增加了一个子命令 - `context`​，用于管理 docker 客户端连接多个上下文环境。  
 通过 context 命令，可通过配置 SSH 协议的上下文连接并管理远程多个 Docker 主机，同时从一台安装了 Docker CLI 的机器导出上下文环境，并在另一台安装了 Docker CLI 的机器导入。

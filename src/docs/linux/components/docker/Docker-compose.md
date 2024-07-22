@@ -1,13 +1,10 @@
 ---
-title: Docker-compose
-date: 2023-04-26T22:18:52Z
-lastmod: 2023-04-26T22:18:52Z
+order: 11
 article: false
-order: 8
+title: Docker-compose
+date: 2024-07-03T16:05:24.000Z
+updated: 2024-07-21T11:18:24.000Z
 ---
-
-# Docker-compose容器编排
-
 Docker-Compose是Docker官方的开源项目，负责实现对Docker容器集群的快速编排。
 
 docker建议我们每一个容器中只运行一个服务,因为docker容器本身占用资源极少,所以最好是将每个服务单独的分割开来。但是这样我们又面临了一个问题？
@@ -20,7 +17,7 @@ Compose允许用户通过一个单独的 docker-compose.yml模板文件 （YAML 
 
 可以很容易地用一个配置文件定义一个多容器的应用，然后使用一条指令安装这个应用的所有依赖，完成构建。Docker-Compose 解决了容器与容器之间如何管理编排的问题。
 
-#### 安装流程
+## 安装流程
 
 Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：[https://github.com/docker/compose/releases](https://github.com/docker/compose/releases)。
 
@@ -51,15 +48,15 @@ $ docker-compose version
 cker-compose version 1.29.2, build 4667896b
 ```
 
-#### 核心概念
+## 核心概念
 
-##### 一文件
+### 一文件
 
 ```shell
 docker-compose.yml
 ```
 
-##### 两要素
+### 两要素
 
 ```shell
 服务(service):
@@ -69,13 +66,13 @@ docker-compose.yml
 由一组关联的应用容器组成的一个完整业务单元，在 docker-compose.yml 文件中定义。
 ```
 
-##### 三个步骤
+### 三个步骤
 
 1. 编写Dockerfile定义各个微服务应用并构建出对应的镜像文件
 2. 使用 docker-compose.yml 定义一个完整业务单元，安排好整体应用中的各个容器服务。
 3. 最后，执行docker-compose up命令 来启动并运行整个应用程序，完成一键部署上线
 
-#### 常用命令
+### 常用命令
 
 ```shell
 docker-compose -h                           #  查看帮助 
@@ -95,7 +92,7 @@ docker-compose start     #  启动服务
 docker-compose stop      #  停止服务 
 ```
 
-## Componse 编排微服务
+## Componse 编排服务
 
 ### web服务
 
@@ -376,3 +373,5 @@ $ curl -v localhost:8000/user_visits/
 * Connection #0 to host localhost left intact
 {"user_visits":42}* Closing connection 0
 ```
+
+‍

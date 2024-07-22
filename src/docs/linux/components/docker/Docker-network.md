@@ -1,20 +1,13 @@
 ---
-title: Docker网络
-date: 2023-04-26T22:18:52Z
-lastmod: 2023-04-26T22:18:52Z
+order: 10
 article: false
-order: 7
+title: Docker-network
+date: 2024-07-03T16:04:58.000Z
+updated: 2024-07-21T11:18:45.000Z
 ---
-
-# Docker网络
-
----
-
-转载[https://cloud.tencent.com/developer/article/1747307](https://cloud.tencent.com/developer/article/1747307)，如有侵权删除
-
 ## **Docker 网络理论**
 
-容器网络实质上是由 Dokcer 为应用程序所创造的虚拟环境的一部分，它能让应用从[宿主机](https://cloud.tencent.com/product/cdh?from_column=20420&from=20420)操作系统的网络环境中独立出来，形成容器自有的网络设备、IP 协议栈、端口套接字、IP 路由表、防火墙等等与网络相关的模块。
+容器网络实质上是由 Dokcer 为应用程序所创造的虚拟环境的一部分，它能让应用从宿主机操作系统的网络环境中独立出来，形成容器自有的网络设备、IP 协议栈、端口套接字、IP 路由表、防火墙等等与网络相关的模块。
 
 Docker 为实现容器网络，主要采用的架构由三部分组成：CNM、Libnetwork 和驱动。
 
@@ -22,7 +15,7 @@ Docker 为实现容器网络，主要采用的架构由三部分组成：CNM、L
 
 Docker 网络架构采用的设计规范是 CNM（Container Network Model）：CNM 中规定了 Docker 网络的基础组成要素：Sandbox、Endpoint、Network。如图所示，
 
-​![](assets/4abelkv4oi-20230730062247-x2wi1t7.jpeg)​
+​![image](assets/net-img-202407031558784-20240721171446-binatc7.jpeg)​
 
 * Sandbox，提供了容器的虚拟网络栈，也即端口套接字、IP 路由表、防火墙、DNS 配置等内容。主要用于隔离容器网络与宿主机网络，形成了完全独立的容器网络环境。
 * Network，Docker 内部的虚拟子网，网络内的参与者相互可见并能够进行通讯。Docker 的虚拟网路和宿主机网络是存在隔离关系的，其目的主要是形成容器间的安全通讯环境。
@@ -32,7 +25,7 @@ Docker 网络架构采用的设计规范是 CNM（Container Network Model）：C
 
 ### **Libnetwork**
 
-Libnetwork 是 CNM 的标准实现。Libnetwork 是开源库，采用 Go 语言编写（跨平台的），也是 Docker 所使用的库，Docker 网络架构的核心代码都在这个库中。Libnetwork 实现了 CNM 中定义的全部三个组件，此外它还实现了本地服务发现、基于 Ingress 的容器[负载均衡](https://cloud.tencent.com/product/clb?from_column=20420&from=20420)，以及网络控制层和管理层功能。
+Libnetwork 是 CNM 的标准实现。Libnetwork 是开源库，采用 Go 语言编写（跨平台的），也是 Docker 所使用的库，Docker 网络架构的核心代码都在这个库中。Libnetwork 实现了 CNM 中定义的全部三个组件，此外它还实现了本地服务发现、基于 Ingress 的容器负载均衡，以及网络控制层和管理层功能。
 
 ### **驱动**
 
@@ -45,7 +38,7 @@ Docker 内置了若干驱动，通常被称作原生驱动或者本地驱动。�
 * Bridge，Docker 容器的默认网络驱动，通过网桥来实现网络通讯。
 * Overlay，借助 Docker 集群模块 Docker Swarm 搭建的跨 Docker Daemon 网络。通过它可以搭建跨物理网络主机的虚拟网络，进而让不同物理机中运行的容器感知不到多个物理机的存在。
 
-​![](assets/wm6xlgs8qx-20230730062247-eh7bf5p.png)​
+​![image](assets/net-img-202407031558785-20240721171447-jvan9yv.png)​
 
 在 Docker 安装时，会自动安装一块 Docker 网卡称为 docker0，用于 Docker 各容器及宿主机的网络通信。
 
@@ -68,7 +61,7 @@ docker0   Link encap:Ethernet  HWaddr 02:42:be:6b:61:dc
 
 那么 Linux 内核中 Linux bridge 应用于容器的话，到底是一个什么样的拓扑图呢？如图所示（这个拓扑关系不清楚接下去的很多东西难以理解，所以先贴出采用 bridge 之后的一个拓扑图），由于容器运行在自己单独的 network namespace 中，所以有单独的协议栈。容器中配置网关为 172.17.0.1，发出去的数据包先到达 br0，然后交给主机的协议栈，由于目的 IP 是外网 IP，且主机会开启 IP forward 功能，于是数据包通过主机的 eth0 发出去。由于 172.17.0.1 是内网 IP ，所以一般发出去之前会做 NAT 转换。由于要进过主机的协议栈并且要做 NAT 转换，所以性能上可能会差点，但是优点就是容器处于内网中，安全性相对要高点。
 
-​![](assets/c2zolz5v52-20230730062246-fgtgh81.png)​
+​![image](assets/net-img-202407031558786-20240721171447-mpu49rs.png)​
 
 默认情况下，创建的容器在没有使用 --network 参数指定要加入的 docker 网络时，默认都是加入 Docker 默认的单机桥接网络，也就是下面的 name 为 bridge 的网络。
 
@@ -91,7 +84,7 @@ $ docker network inspect bridge | grep bridge.name
 
 Docker 默认的 bridge 网络和 Linux 内核中的 “docker0” 网桥是一个对应关系，如图所示。bridge 是 Docker 中对网络的命名，而 docker0 是内核中网桥的名字。（个人理解：你就可以把 bridge 和 docker0 当成 Linux 网桥的两个名字，两个都是代表同一个东西。docker 为了管理网络，又给 docker0 这个网桥取名为 bridge）。
 
-​![](assets/4wc7ze405l-20230730062246-bsd7gmj.png)​
+​![image](assets/net-img-202407031558787-20240721171447-cr46cg5.png)​
 
 那么，容器在没有指定要加入的网络情况下，都是加入这个网络的，假如之后的拓扑图跟前面的一样。另外，单机桥接网络中的容器想要对外发布服务的话，需要依赖于端口映射，这也是为啥我们在启动容器的时候需要指定端口映射关系 的原因。
 
@@ -127,7 +120,7 @@ docker0   Link encap:Ethernet  HWaddr 02:42:be:6b:61:dc
 			......
 ```
 
-​![](assets/x9ozccyh7a-20230730062246-k2dfn7k.png)​
+​![image](assets/net-img-202407031558788-20240721171447-sos4rl9.png)​
 
 ### **同个网络中的容器间通信**
 
@@ -146,7 +139,7 @@ br-f55943e20201 8000.02421d9aa3e1       no              vethf6a3fba
 docker0         8000.0242be6b61dc       no
 ```
 
-​![](assets/beadv4m8rc-20230730062247-o6n8nnb.png)​
+​![image](assets/net-img-202407031558789-20240721171447-8c88wmm.png)​
 
 如果在相同的网络中继续接入新的容器，那么新接入的容器是可以通过 demo1 这个名称来 ping 通的。如下所示，我们创建了一个新的容器（demo2），并且在这个容器中直接 ping demo1 发现可以的 ping 通的。这是因为，demo2 运行了一个本地 DNS 解析器，该解析器会将该请求转发到 Docker 内部 DNS 服务器中。DNS 服务器中记录了容器启动时通过 --name 或者 --net-alias 参数指定的名称和容器之间的和映射关系。
 
@@ -161,9 +154,9 @@ PING demo1 (172.18.0.2): 56 data bytes
 64 bytes from 172.18.0.2: seq=1 ttl=64 time=0.161 ms
 ```
 
-​![](assets/uk2es4076l-20230730062247-mn16763.png)​
+​![image](assets/net-img-202407031558790-20240721171447-nevz2hy.png)​
 
-> ★Docker 默认的 bridge 网络是不支持通过 Docker DNS 服务进行[域名解析](https://cloud.tencent.com/product/cns?from_column=20420&from=20420)的，自定义桥接网络是可以的。 ”
+> ★Docker 默认的 bridge 网络是不支持通过 Docker DNS 服务进行域名解析的，自定义桥接网络是可以的。 ”
 
 ### **暴露端口**
 
@@ -200,7 +193,7 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 
 上面提到的桥接网络中的容器只能与位于相同网络中的容器进行通信，假如一个容器想对外提供服务的话，需要进行端口映射。端口映射将容器的某个端口映射到 Docker 主机端口上。那么任何发送到该端口的流量，都会被转发到容器中。如图所示，容器内部开放端口为 80，该端口被映射到了 Docker 主机的 10.0.0.15 的 5000 端口上。最终访问 10.0.0.15:5000 的所有流量都会被转发到容器的 80 端口。
 
-​![](assets/ij7hd1k4wz-20230730062247-m9j8oyf.png)​
+​![image](assets/net-img-202407031558791-20240721171447-w0edwj2.png)​
 
 如下图所示，假设我们运行了一个新的 web 服务容器，并且将容器 80 端口映射到 Dokcer 主机的 5000 端口。
 
@@ -212,7 +205,7 @@ $ docker container run -d --name web --network localnet -p 5000:80 nginx
 
 端口映射之后，假如主机的 5000 端口被占用了，那么其他容器就不能再使用这个端口了。
 
-​![](assets/9d9ab2t3ut-20230730062246-8k56paa.png)​
+​![image](assets/net-img-202407031558792-20240721171448-8rz6b9u.png)​
 
 ## **相关命令**
 
@@ -244,3 +237,7 @@ docker container run -d --name web --network localnet -p 5000:80 nginx
 # 查看系统中的网桥
 brctl show
 ```
+
+## 备注
+
+转载[https://cloud.tencent.com/developer/article/1747307](https://cloud.tencent.com/developer/article/1747307)，如有侵权删除

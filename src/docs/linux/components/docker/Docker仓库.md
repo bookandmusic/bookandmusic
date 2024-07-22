@@ -1,13 +1,10 @@
 ---
-title: Docker仓库
-date: 2023-04-26T22:18:52Z
-lastmod: 2023-04-26T22:18:52Z
+order: 12
 article: false
-order: 6
+title: Docker仓库
+date: 2024-07-03T16:04:53.000Z
+updated: 2024-07-21T11:17:51.000Z
 ---
-
-# Docker仓库
-
 ## Docker仓库介绍
 
 在使用Docker时，我们经常需要将我们自己的镜像上传到远程仓库，供其他人或者其他机器使用。而Docker仓库就是用来存储Docker镜像的地方。Docker官方提供了公共的Docker Hub，我们可以在上面存储和分享镜像。但是由于网络原因，有时候我们需要自己搭建Docker仓库，或者是为了保证数据安全，我们需要自己的私有仓库。下面就介绍一下如何自己搭建Docker仓库。
@@ -26,7 +23,7 @@ docker pull registry
 docker images
 ```
 
-由于Registry是一个镜像，运行后若我们删除了容器，里面的资源就会丢失，  
+由于Registry是一个镜像，运行后若我们删除了容器，里面的资源就会丢失，
 所以我们在运行时，指定一个资源的挂载目录，映射到宿主的一个目录下，这样资源就不会丢失了。
 
 ```bash
@@ -153,40 +150,40 @@ registry                      2.6.2     10b45af23ff3   3 years ago     28.5MB
 
 Docker Registry HTTP API 是面向 Docker Registry v2 的 API，用于与 Registry 进行通信以管理 Docker 镜像。常用的 API 如下：
 
-1. **检查 API 版本**  
-    请求路径: `GET /v2/`​  
-    参数列表: 无  
-    返回值: 如果成功，返回 200 OK，表示正在使用 Docker Registry v2 API。
+1. **检查 API 版本**
+   请求路径: `GET /v2/`​
+   参数列表: 无
+   返回值: 如果成功，返回 200 OK，表示正在使用 Docker Registry v2 API。
 2. **检索所有镜像仓库**
 
-    请求路径: `GET /v2/_catalog`​
+   请求路径: `GET /v2/_catalog`​
 
-    参数列表: 无
+   参数列表: 无
 
-    返回值: 成功时返回一个 JSON 对象，包含所有镜像仓库。
-3. **获取镜像仓库的所有标签**  
-    请求路径: `GET /v2/<name>/tags/list`​  
-    参数列表:
+   返回值: 成功时返回一个 JSON 对象，包含所有镜像仓库。
+3. **获取镜像仓库的所有标签**
+   请求路径: `GET /v2/<name>/tags/list`​
+   参数列表:
 
-    * ​`name`​: 镜像仓库名称
+   * ​`name`​: 镜像仓库名称
 
-    返回值: 成功时返回一个 JSON 对象，包含仓库的所有标签。
-4. **拉取镜像的 manifest**  
-    请求路径: `GET /v2/<name>/manifests/<reference>`​  
-    参数列表:
+   返回值: 成功时返回一个 JSON 对象，包含仓库的所有标签。
+4. **拉取镜像的 manifest**
+   请求路径: `GET /v2/<name>/manifests/<reference>`​
+   参数列表:
 
-    * ​`name`​: 镜像仓库名称
-    * ​`reference`​: 镜像标签或摘要
+   * ​`name`​: 镜像仓库名称
+   * ​`reference`​: 镜像标签或摘要
 
-    返回值: 成功时返回镜像的 manifest，它是一个 JSON 对象。
-5. **删除镜像的 manifest**  
-    请求路径: `DELETE /v2/<name>/manifests/<reference>`​  
-    参数列表:
+   返回值: 成功时返回镜像的 manifest，它是一个 JSON 对象。
+5. **删除镜像的 manifest**
+   请求路径: `DELETE /v2/<name>/manifests/<reference>`​
+   参数列表:
 
-    * ​`name`​: 镜像仓库名称
-    * ​`reference`​: 镜像摘要
+   * ​`name`​: 镜像仓库名称
+   * ​`reference`​: 镜像摘要
 
-    返回值: 成功时返回 202 Accepted，表示已成功删除。
+   返回值: 成功时返回 202 Accepted，表示已成功删除。
 
 ### Search
 
