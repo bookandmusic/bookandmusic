@@ -74,6 +74,10 @@ export default navbar([
         link:"command/",
       },
       {
+        text: "资源管理",
+        link:"resource/",
+      },
+      {
         text: "服务管理",
         link:"service/",
       },

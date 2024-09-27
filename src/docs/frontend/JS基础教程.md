@@ -1,0 +1,1585 @@
+---
+created: 2023-08-03T13:01:19.000Z
+article: false
+order: 1
+tags:
+  - Js
+title: JS基础教程
+updated: 2024-09-27T07:32:16.000Z
+---
+## JS简介
+
+JavaScript是运行在浏览器端的脚本语言
+
+JavaScript主要解决的是前端与用户交互的问题 是一种动态性、弱类型的语言;
+
+他的解释器就在我们的浏览器中，是浏览器的一部分
+
+这门语言对大小写敏感，并会忽略多余的空格，可以使用\进行代码换行，注释使用//或/**/
+
+主要由三部分组成:
+
+- ECMAScript:语言的语法和基本对象
+- 文档对象模型Dom(Document Object Model):处理网页内容的方法和接口
+- 浏览器对象模型Bom(BrowserObjectModel):与浏览器进行交互的方法和接口
+
+> 前端三部分
+
+HTML:页面的内容、结构
+
+CSS:页面的表现形式、部分动画
+
+JavaScript:页面的行为、交互、功能
+
+> JavaScript 与 Java 是两种完全不同的语言，无论在概念上还是设计上。
+> Java（由 Sun 发明）是更复杂的编程语言。
+> ECMA-262 是 JavaScript 标准的官方名称。
+
+JavaScript 由 Brendan Eich 发明。它于 1995 年出现在 Netscape 中（该浏览器已停止更新），并于 1997 年被 ECMA（一个标准协会）采纳。
+
+**ECMAScript 版本**
+
+JavaScript 已经由 ECMA（欧洲电脑制造商协会）通过 ECMAScript 实现语言的标准化。
+
+|年份|名称|描述|
+| :--: | :------------: | :---------------------------------------------------|
+|1997|ECMAScript 1|第一个版本|
+|1998|ECMAScript 2|版本变更|
+|1999|ECMAScript 3|添加正则表达式<br>添加 try/catch|
+|||ECMAScript 4|
+|2009|ECMAScript 5|添加 "strict mode"，严格模式<br>添加 JSON 支持|
+|2011|ECMAScript 5.1|版本变更|
+|2015|ECMAScript 6|添加类和模块|
+|2016|ECMAScript 7|增加指数运算符 (**)<br>增加 Array.prototype.includes|
+
+> ECMAScript 6 也称为 ECMAScript 2015。
+> ECMAScript 7 也称为 ECMAScript 2016。
+
+## JS引入
+
+行间事件:为某一个具体的元素标签赋予js内容
+
+```html
+<input type="button" value="按钮" onclick="alert('点我');">
+```
+
+嵌入引入:在文档页面通过Script标签嵌入
+
+```html
+<head>
+  <title></title>
+  <script type="text/javascript">
+    alert("ok!");
+  </script>
+</head>
+```
+
+外部引入:定义单独js文件，通过script标签进行引入
+
+```html
+<script type="text/javascript" src="js/main.js"></script>
+```
+
+> alert函数用来展示一个提示框
+
+## 定义变量
+
+```javascript
+var x = 1
+var y = "2"
+```
+
+- 定义变量需要使用关键字:var
+- 同时定义多个变量可以使用 ， 隔开
+
+> 注意:javascript变量均为对象，每当声明一个变量，就相当于创建了一个对象
+
+### 命名规则
+
+1. 区分大小写
+2. 首字符为字母、数字、下划线_、或美元符号$
+3. 其他字符可以为字母、数字、下划线、美元符号
+
+### 调试程序的方法
+
+- alert:弹框
+- console.log():浏览器控制台
+- document.write():页面控制
+
+## 数据类型
+
+### 基本数据类型
+
+`Number`:数字类型，可以带小数点，也可以不带
+
+```javascript
+var a = 1;
+var b = 1.5;
+```
+
+`String`:字符串类型，可以使用单引号或双引号
+
+```javascript
+var a = "abc";
+var b = "aaaa" + 1
+```
+
+`Boolean`:布尔类型，只能是true|false
+
+```javascript
+var a = true;
+```
+
+`undefined`:未定义类型
+
+```javascript
+var a;
+```
+
+`null`:空对象类型
+
+```javascript
+var a = null;
+```
+
+查看变量数据类型:
+
+```javascript
+var x = "abc";
+alert(typeof x)
+```
+
+> 匈牙利命名规则
+
+- 对象 o (Object):oPerson
+- 数组 a (Array):aUsers
+- 字符串 s (String):sAccount
+- 整数 i (Integer):iScore
+- 布尔值 b (Boolean):bIsLogin
+- 浮点数 f (Float):fPrice
+- 函数 f (Function):fEats
+- 正则 re (RegExp):reIDCard
+
+### 类型转换
+
+转换为字符串:`toString`，支持`Boolean`、`Number`、`String`三种主要类型
+
+```javascript
+var x = 1;
+var y = "abc";
+var z = true;
+alert(x.toString()) // "1"
+alert(y.toString()) // "abc"
+alert(z.toString()) // "true"
+```
+
+转换为数字:`parseInt`、`parseFloat`，将只含有数字的字符串变为整形或浮点型，其他类型返回NaN
+
+```javascript
+var x = "123"
+alert(parseInt(x)) //123
+alert(parseFloat(x)) //123
+
+var y = "123.01"
+alert(parseInt(y)) //123
+alert(parseFloat(y)) //123.01
+
+var z = "123aa"
+alert(parseInt(z)) //123
+alert(parseFloat(z)) //123
+
+var a="012.23a"
+alert(parseInt(a)) //12,不能识别八进制
+alert(parseFloat(a)) //12.23,不能识别八进制
+
+var b = "0xff"
+alert(parseInt(b)) //255,可以直接识别十六进制
+alert(parseFloat(b)) //0,不能识别,得到0
+```
+
+> **注意**：
+
+`parseInt`
+
+- 转换的字符串应该是十进制
+- 八进制,该方法会忽略前导0，八进制数字020会被解析为20
+- 十六进制数字0xFF，会返回对应的十进制数字
+- 其他不合法数据，会返回NaN
+
+`parseFloat`
+
+- 转换的包含浮点数的字符串应该是十进制
+- 八进制,该方法会忽略前导0,八进制数字020会被解析为20
+- 十六进制数字0xFF，会返回0，
+- 其他不合法数据，会返回NaN
+
+### 强制类型转换
+
+`Boolean`:当要转换的值是至少有一个字符的字符串;
+
+- 非 0 数字或对象时，Boolean() 函数将返回 true。
+- 如果该值是空字符串、数字 0、undefined 或 null，它将返回 false。
+
+```javascript
+alert(Boolean(0)) // false
+alert(Boolean(1)) // true
+alert(Boolean("1")) // true
+alert(Boolean("1a")) // true
+```
+
+`Number`:换与 `parseInt`和 `parseFloat` 方法的处理方式相似，只是它转换的是整个值，而不是部分值。
+
+```javascript
+alert(Number(false)) // 0
+alert(Number(true)) // 1
+alert(Number(undefined)) // NaN
+alert(Number(null)) // 0
+alert(Number("1.2")) // 1.2
+alert(Number("12")) // 12
+alert(Number("12ab")) // NaN
+alert(Number("1.2.3")) // NaN
+alert(Number(new object())) // NaN
+alert(Number(50)) // 50
+```
+
+### 复合类型
+
+`Array`:数组，索引从0开始
+
+```javascript
+var people = ['张三','李四','王五'];
+var people = new Array('张三','李四','王五'); 
+var people = new Array();
+people[0] = "张三"
+people[1] = "李四"
+people[2] = "王五"
+```
+
+`Object`:对象，就像是字典，定义时key值不需要设置类型
+
+```javascript
+var person = { name: "张三",
+age: 18,
+	sex: "male",
+};
+/*对象有两种访问方式:*/ 
+person["name"] 
+person.name
+```
+
+```javascript
+var person = new Object(); 
+person.name = "张三"; 
+person.age = 17;
+```
+
+## 运算符
+
+### 算术运运算符
+
+> `y=5`
+
+|运算符|描述|示例|结果|
+| :----: | :--: | :--: | :--: |
+|`+`|加|`x=y+2`|`x=7`|
+|`-`|减|`x=y-2`|`x=3`|
+|`*`|乘|`x=y*2`|`x=10`|
+|`/`|除|`x=y/2`|`x=2.5`|
+|`%`|取余|`x=y%2`|`x=1`|
+|`++`|累加|`x=++y`|`x=6`|
+|`--`|递减|`x=--y`|`x=4`|
+
+### 赋值运算符
+
+> `x=10`,`y=5`
+
+|运算符|示例|等价于|结果|
+| :----: | :--: | :----: | :--: |
+|`=`|`x=y`||`x=5`|
+|`+=`|`x+=y`|`x=x+y`|`x=15`|
+|`-=`|`x-=y`|`x=x-y`|`x=5`|
+|`*=`|`x*=y`|`x=x*y`|`x=50`|
+|`/=`|`x/=y`|`x=x/y`|`x=2`|
+|`%=`|`x%=y`|`x=x%y`|`x=0`|
+
+> 注意:数字与字符串相加，结果将成为字符串
+
+### 比较运算符
+
+> `x=5`
+
+|运算符|描述|示例|
+| :----: | :-------------| :--------|
+|`==`|等于|`x==8` 为 `false`|
+|`===`|全等(值和类型)|`x===5` 为 `true`;`x==="5"` 为 `false`|
+|`!=`|不等于|`x!=8` 为 `true`|
+|`>`|大于|`x>8` 为 `false`|
+|`<`|小于|`x<8` 为 `true`|
+|`>=`|大于或等于|`x>=8` 为 `false`|
+|`<=`|小于或小于|`x<=8` 为 `true`|
+
+### 逻辑运算符
+
+> `x=7`,`y=2`
+
+<div>
+<table>
+  <tbody>
+    <tr>
+        <th>运算符 </th>
+        <th>描述</th>
+        <th>示例</th>
+    </tr>
+    <tr>
+        <td><code>&&</code></td>
+        <td>and</td>
+        <td><code>(x < 10 && y> 1)</code> 为<code>true</code> </td>
+    </tr>
+    <tr>
+        <td><code>||</code> </td>
+        <td>or</td>
+        <td><code>(x==5 || y==5) 为 false</code> </td>
+    </tr>
+    <tr>
+        <td><code>!</code>  </td>
+        <td>not</td>
+        <td><code>!(x==y)</code>为<code>true</code> </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+### 条件运算符
+
+```javascript
+var NumCheck = 0;
+var Dis = (NumCheck==0) ? "是数字0":"不是数字0";
+```
+
+> 变量`NumCheck`是0，则Dis的值为:"是数字0";反之为:"不是数字0"
+
+## 条件语句
+
+### if语句
+
+```javascript
+var a = 0
+
+if(a==0){
+  alert("0");
+}
+else if(a<0){
+  alert("负数");
+}
+else{
+  alert("正数");
+}
+```
+
+### switch语句
+
+```javascript
+var day = new Date().getDay()
+
+switch (day) {
+  case 0:
+    alert("星期日")
+    break
+  case 1:
+    alert("星期一")
+    break
+  case 2:
+    alert("星期二")
+    break
+  case 3:
+    alert("星期三")
+    break
+  case 4:
+    alert("星期四")
+    break
+  case 5:
+    alert("星期五")
+    break
+  case 6:
+    alert("星期六")
+    break
+}
+```
+
+## 循环语句
+
+### for循环语句
+
+> for循环数字
+
+```javascript
+for (var i = 0; i < 10; i++) {
+  console.log(i)
+}
+// for(起点数据; 判断条件; 数据递增或递减){}
+```
+
+```javascript
+var i = 0
+for (; i < 10; i++) {
+  console.log(i)
+}
+// 如果循环起始值已经被设置，可以在开头省略
+```
+
+```javascript
+for (var i = 0; ; i++) {
+  console.log(i)
+  if (i == 5) {
+    break
+  }
+}
+// 当没有第二个语句时，必须在循环内提供break，否则循环则无法停下来，可能令浏览器崩溃
+```
+
+```javascript
+for (var i = 1; i < 10;) {
+  console.log(i)
+  i *= 2
+}
+// 如果没有提供第三个语句，可以在for循环中实现数值的变化
+```
+
+- for循环对象
+
+  ```javascript
+  var x = "abcdef"  // 0,1,2,3,4,5
+  var y = [1, 2, 3, 4, "5"] // 0,1,2,3,4
+  var z = { //  name,age,gender
+    name: "张三", age: 16, gender: "男",
+  }
+  for (obj in z) {
+    // 直接循环遍历，得到的是下标,而不是对应的值
+    console.log(obj + ":" + z[obj]);
+  }
+  ```
+
+### while循环语句
+
+> while循环
+
+```javascript
+var i = 0
+
+while (i < 10) {
+  console.log(i)
+  i += 2
+}
+```
+
+`do/while`循环
+
+```javascript
+var i = 0
+
+do {
+  console.log(i)
+  i += 2
+} while (i < 10)
+```
+
+> **注意** :
+> do/while 循环是 while 循环的变体 该循环首先会执行一次循环代码块，然后检查循环条件是否为真 然后如果条件为真的话，就会重复这个循环
+
+## 函数
+
+### 函数语法
+
+包裹在花括号中的代码块，前面使用了关键词 `function`
+
+```javascript
+function func(arg1, arg2) {
+  alert("函数被执行")
+  // 执行代码
+  return 1; // return是可选的，并且可以不写返回值，单纯只做函数终止
+}
+// 函数名 func
+// 参数 arg1,arg2,... 
+// 返回值 return 1 
+func() // 函数执行
+```
+
+### 变量作用域
+
+**局部变量**
+
+- 在 JavaScript 函数内部声明的变量(使用 var)是局部变量
+- 只能在函数内部访问它,该变量的作用域是局部的
+- 生命周期:局部变量会在函数运行以后被删除 (生命期从它们被声明的时间开始)
+
+**全局变量**
+
+- 在函数外声明的变量是全局变量
+- 网页上的所有脚本和函数都能访问它
+- 生命周期:全局变量会在页面关闭后被删除 (生命期从它们被声明的时间开始)
+
+局部变量如果希望变为全局变量,可以使用`windows.var = `的形式赋予给当前窗口
+
+```javascript
+{
+  var x = 1;
+  window.x = x;
+};
+```
+
+### 函数解析过程
+
+1. 预编译:function函数提前，并将var定义的变量声明提前，先暂时赋值为undefined
+2. 执行
+
+   ```javascript
+   func() // 弹出提示
+   alert(iNum) // undefined
+   alert(abc) // 出错
+   function func() {
+       alert("这个是函数")
+   }
+   var iNum = 1
+   ```
+
+### 匿名函数(函数表达式)
+
+顾名思义，匿名函数就是没有实际名字的函数。然而，正因为他们没有“名字”，我们也没有办法找到他们
+
+要调用一个函数，我们必须要有方法定位它，引用它。所以，我们会需要帮它找一个名字
+
+```javascript
+var k = function () {
+  console.log("函数执行")
+}
+
+k()
+```
+
+### 封闭函数
+
+封闭函数是javascript中匿名函数的另外一种写法，创建一个一开始就执行而不用命名的函数。
+
+使用`()`将匿名函数括起来，然后后面再加一对小括号（包含参数列表）
+
+```javascript
+(function(a,b){
+  return a+b
+})(1,2)
+```
+
+很多人或许会奇怪，为什么这种方法能成功调用呢？觉得这个应用奇怪的人就看一下我以下这段解释吧。
+
+大家知道小括号的作用吗？小括号能把我们的表达式组合分块，并且每一块，也就是每一对小括号，都有一个返回值。这个返回值实际上也就是小括号中表达式的返回值。所以，当我们用一对小括号把匿名函数括起来的时候，实际上小括号对返回的，就是一个匿名函数的Function对象。因此，小括号对加上匿名函数就如同有名字的函数般被我们取得它的引用位置了。所以如果在这个引用变量后面再加上参数列表，就会实现普通函数的调用形式。
+
+还可以在函数定义前加上"~"或者"!"符号来定义匿名函数
+
+```javascript
+!function(a,b){
+  alert(a+b)
+}(1,2)
+```
+
+## 操作页面元素
+
+### 获取页面元素
+
+通过页面元素ID值进行获取:document.getElementById(''),获取到的是一个HTML对象，可以赋值给一个变量
+
+> 注意:获取对应元素时，首先要确定页面已经生成所需元素
+
+通常我们将javascript代码写到页面最下面;
+
+或通过使用`windows.onload()`事件判断是否已经生成页面。
+
+```html
+<body>
+  <div id="app">
+
+  </div>
+
+  <script>
+    var sp = document.getElementById("app")
+    console.log(sp) //此时sp即是获取到的页面元素
+  </script>
+</body>
+```
+
+### 读写页面元素
+
+可以通过id方式获取到对应页面内的元素，就可以对元素的属性进行操作，包括对属性的读和写
+
+读取元素属性:元素.属性
+
+```html
+<p style="color: red" id="app"> 这是一段红色的文字 </p>
+
+<script>
+  var sp = document.getElementById("app")
+  console.log(sp.id)
+  console.log(sp.style)
+  console.log(sp.style.color)
+</script>
+```
+
+修改元素属性:元素.属性 = xxx
+
+```html
+<p id="aaa" style="color: red;">这是一段待获取的文字</p>
+<button onclick="blue_font()">按钮</button>
+<script>
+  function blue_font() {
+    var oP = document.getElementById('aaa'); 
+    oP.style.color = "blue";
+    // 修改字体样式属性中的字体颜色为蓝色
+  }
+</script>
+```
+
+```html
+<p id="aaa" style="color: red;">这是一段待获取的文字</p>
+<button id="Button">按钮</button>
+<script>
+  var oButton = document.getElementById('Button');
+  oButton.onclick = function () {
+    var oP = document.getElementById('aaa');
+    oP.style.color = "blue";
+    // 修改字体样式属性中的字体颜色为蓝色
+  }
+</script>
+```
+
+读取或写入标签包裹的内容(读取或修改标签文本内容):innerHTML/innerText
+
+```html
+<div id="app"></div>
+<div id="app2"></div>
+
+<script>
+  document.getElementById("app").innerHTML= "<h1>hello</h1>"
+  document.getElementById("app2").innerText = "<h1>hello</h1>"
+</script>
+```
+
+## Js事件及属性
+
+下面是一个属性列表，这些属性可插入 HTML 标签来定义事件动作。
+
+|属性|当以下情况发生时，出现此事件|
+| :----------: | :-----------------------------------------|
+|onblur|使用在表单元素中，当元素失去焦点的时候执行|
+|onchange|使用在表单元素中，当某些东西改变是执行|
+|onclick|鼠标点击一个元素时执行|
+|ondblclick|鼠标双击一个元素时执行|
+|onfocus|使用在表单元素中，当元素获得焦点时执行|
+|onkeydown|按下某个按键时执行|
+|onkeypress|按下和释放某个按键时执行|
+|onkeyup|释放某个按键时执行|
+|onload|在body标签中使用，载入页面的时候执行|
+|onmousedown|按下鼠标按键时执行|
+|onmousemove|鼠标光标在元素上移动时执行|
+|onmouseout|鼠标光标移开元素时执行|
+|onmouseover|鼠标光标移到元素上时执行|
+|onmouseup|当释放鼠标按键时执行|
+|onreset|用在表单元素中，当表单重置时执行|
+|onselect|用在表单元素中，当元素被选择时执行|
+|onsubmit|用在表单元素中，当表单提交时执行|
+|onunload|用在body标签中，当关闭页面时执行|
+|onmonsewheel|鼠标光标在元素上，鼠标滑轮滑动时执行|
+
+> 事件示例
+
+```html
+<p id="p1">这是一段文字</p>
+<p id="p2" onmouseout="func()" onmouseover="func()">这是一段文字</p>
+
+<script>
+  // 定义函数f1
+  f1 = function () {
+    var op = document.getElementById("p1")
+    op.onmouseover = function () {
+      op.style.color = "red"
+    }
+    op.onmouseout = function () {
+      op.style.color = "green"
+    }
+  }
+  f1() // 执行函数f1
+
+  function func() {
+    var op = document.getElementById("p2")
+    if (op.style.color == "red") {
+      op.style.color = "green"
+    }
+    else {
+      op.style.color = "red"
+    }
+  }
+</script>
+```
+
+## 定时器
+
+> 作用:定时调用函数 制作动画
+
+### 反复执行定时器
+
+`setInterval(code, millisec)`:反复执行的定时器
+
+- code: 必须参数，要调用的函数或要执行的代码串
+- millisec: 必须参数，执行code任务所需要的事件间隔，以毫秒计
+
+`clearInterval(setInterval_obj)`:关闭反复执行的定时器
+
+> 跑马灯
+
+```html
+<p id="p1">hello</p>
+<input type="button" value="开启" id="btn1">
+<input type="button" value="关闭" id="btn2">
+
+<script>
+  let sT
+  let op = document.getElementById("p1")
+  function loop() {
+    var txt = op.innerText // 获取元素对应的文本内容
+    op.innerText = txt.substr(1) + txt[0] //拼接为新的字符串,并重新赋值回去
+  }
+  btn1.onclick = function () {
+    //定时器不存在,创建新的定时器
+    if (!sT) {
+      sT = setInterval(loop, 500)
+    }
+    //否则,弹出提示
+    else {
+      alert("已经开启")
+    }
+  }
+
+  btn2.onclick = function () {
+    // 定时器存在,关闭定时器,并重新置为null
+    if (sT) {
+      clearInterval(sT)
+      sT = null
+    }
+    //否则,弹出提示
+    else {
+      alert("已经关闭")
+    }
+  }
+
+</script>
+```
+
+### 等待执行定时器
+
+`setTimeout(code, millisec)`:定义只执行一次的等待定时器
+
+- code: 必须参数，要调用的函数或要执行的代码串
+- millisec: 必须参数，执行code任务所需要的事件间隔，以毫秒计
+
+`clearTimeout(setTimeout_obj)`:关闭只执行一次的等待计时器
+
+> 文本定时关闭
+
+```html
+<p id="p1">hello</p>
+<input type="button" value="切换显示" id="btn1">
+<input type="button" value="清除定时器" id="btn2">
+
+<script>
+  let sT
+  let op = document.getElementById("p1")
+  function loop() {
+    //文本为空,重新显示文本
+    if (op.innerText == "") {
+      op.innerText = "hello"
+    }
+    else {
+      op.innerText = ""
+    }
+  }
+  btn1.onclick = function () {
+    //定时器不存在,创建新的定时器
+    if (!sT) {
+      sT = setTimeout(loop, 1500)
+    }
+    //否则,弹出提示
+    else {
+      alert("已经开启定时器")
+    }
+  }
+
+  btn2.onclick = function () {
+    // 定时器存在,关闭定时器,并重新置为null
+    if (sT) {
+      clearTimeout(sT)
+      sT = null
+    }
+    //否则,弹出提示
+    else {
+      alert("已经清除定时器")
+    }
+  }
+
+</script>
+```
+
+## 内置方法
+
+### 数组方法
+
+```javascript
+// 1.数组的操作方法
+
+var a = [];
+
+a.unshift()     /*在数组的开头添加一个或者多个元素，返回新长度；IE9+*/
+
+a.shift()       /*删除数组中的第一个元素，返回删除的元素*/
+
+a.push()        /*往数组的末尾添加一个或多个元素，返回新长度*/
+
+a.pop()         /*删除并返回数组的最后一个元素*/
+
+
+a.slice('start', 'end') /*不修改原数组，返回一个新数组*/
+
+a.concat()      /*不修改原数组，返回一个新数组。不传参数时，复制数组；传参数时连接数组，可以有多个数组参数；注意:数组+得到是字符串*/
+
+a.splice()      /*删除数组：两个参数，第一个是开始的位置，第二个是删除的长度
+
+                插入元素：至少3个参数，第一个是开始的位置，第二个是0，后面是要插入的元素（可以有多个）
+
+                替换元素：至少3个参数，第一个是开始的位置，第二个是替换的个数，后面是要替换的元素*/
+
+a.reverse()     /*反转数组*/
+
+a.sort()        /*用特定的方法对数组进行排列，接收一个排序函数，该函数接收两个参数，
+
+                如果第一个参数在前面，返回一个负数；如果第二个参数在前面，返回一个正数；如果两个参数相等，返回0*/
+
+a.indexOf()     /*在数组中查找元素，两个参数，第一个参数时要查找的元素；第二个参数是要开始查找的位置（该参数可以没有）*/
+
+a.lastIndexOf()     /*从数组的后面开始查找元素，与indexOf相同，只是查找方向不同*/
+
+a.join()        /*把数组格式化成字符串，接收一个参数，即：分隔符。如果不传参数或传入undefined，则以逗号分隔*/
+
+a.toString()        /*返回以逗号为分隔符的数组中的元素组成的字符串*/
+
+
+a instanceof Array  /*检测是否为数组，如果是，返回true*/
+
+Array.isArray(a)    /*检测是否为数组，如果是，返回true。IE9+*/
+```
+
+### 字符串方法
+
+```javascript
+// 字符串操作方法
+
+var b = '54545';
+
+
+b.slice('start', 'end')     /*返回一个新的字符串，不不包含end，不改变原字符串*/
+
+b.substring('start', 'end') /*与slice一样*/
+
+b.substr('start', 'length') /*返回一个新字符串，不改变原字符串*/
+
+b.split("")                 /*按照特定符号切割字符串，得到数组*/
+
+
+
+b.indexOf()         /*在字符串中从前往后查找字符，没找到就返回-1。接收两个参数：第一个参数时要查找的字符；第二个参数是（可选的）开始查找的位置*/
+
+b.lastIndexOf()         /*与indexOf用法相同，改方法是从后往前查找*/
+
+b.search()          /*在字符串中查找，并返回位置。接收一个参数（要查找的字符串），如果没找到，返回-1.从左向右查找*/
+
+b.replace()         /*查找并替换(不改变原字符串)，返回一个新字符串，接收两个参数。第一个参数：要替换（查找）的字符串；第二个：要替换成的字符串。*/
+
+b.trim()            /*创建一个字符串副本，删除前置及后缀的所有空格，返回结果。 IE9+*/
+
+b.toLocaleLowerCase()           /*字符串大写转为小写（针对地区特定的方法，推荐使用）*/
+
+b.toLocaleUpperCase()           /*字符串小写转为大写（针对地区特定的方法，推荐使用）*/
+
+
+
+b.toLowerCase()         /*字符串大写转为小写*/
+
+b.toUpperCase()         /*字符串小写转为大写*/
+
+b.localeCompare('str')          /*比较字符串b与str，并返回0或一个正数或一个负数。如果在字母表中b在str的前面，就返回一个负数；在后面，返回一个正数；相等返回0*/
+
+
+b.concat()          /*拼接字符串，返回新的字符串,不改变原字符串。实践中最常用的是+操作符*/
+
+b.charAt()          /*接收一个参数（字符串中的位置），返回字符串中某位置上的字符*/
+
+b.charCodeAt()          /*与charAt用法相同，返回的是该字符的字符编码*/
+
+String.fromCharCode()           /*传入字符串的编码，把编码解析为字符串并返回该字符串。可接收多个编码参数*/
+```
+
+### 时间模块
+
+```javascript
+var date = new Date();
+
+date.getYear(); //获取当前年份(2位)
+
+date.getFullYear(); //获取完整的年份(4位)
+
+date.getMonth(); //获取当前月份(0-11,0代表1月)
+
+date.getDate(); //获取当前日(1-31)
+
+date.getDay(); //获取当前星期X(0-6,0代表星期天)
+
+date.getTime(); //获取当前时间(从1970.1.1开始的毫秒数)
+
+date.getHours(); //获取当前小时数(0-23)
+
+date.getMinutes(); //获取当前分钟数(0-59)
+
+date.getSeconds(); //获取当前秒数(0-59)
+
+date.getMilliseconds(); //获取当前毫秒数(0-999)
+
+date.toLocaleDateString(); //获取当前日期
+
+date.toLocaleTimeString(); //获取当前时间
+
+date.toLocaleString(); //获取日期与时间
+```
+
+### 示例
+
+```javascript
+/*按照绝对值降序排序*/
+function f(a,b){
+    return Math.abs(b)-Math.abs(a)
+}
+var a = [ -1, -2, -2, -9, 5, 6]
+a.sort(f)
+```
+
+## Json
+
+JSON是JavaScript Object Notation的缩写，意思是JavaScript 对象表示法
+
+是存储和交换文本信息的语法。类似 XML，不过它比 XML 更小、更快，更易解析
+
+官网的介绍 http://www.json.org/json-zh.html
+
+JSON(JavaScript Object Notation) 是一种**轻量级的数据交换格式**。 易于人阅读和编写。同时也易于机器解析和生成。 它基于JavaScript Programming Language, Standard ECMA-262 3rd Edition - December 1999的一个子集。 JSON采用**完全独立于语言的文本格式**，但是也使用了类似于C语言家族的习惯（包括C, C++, C#, Java, JavaScript, Perl, Python等）。 这些特性使JSON成为理想的数据交换语言。
+
+### JSON 语法规则
+
+JSON建构于两种结构：
+
+> "名称/值"对的集合 (键值对)
+
+不同的语言中，它被理解为对象（object）、纪录（record）、结构（struct）、字典（dictionary）、哈希表（hash table）、有键列表（keyed list）、或者关联
+
+对象是一个无序的 **'名称/值'对集合。一个对象以**​ **​`{`​** ​ **（左括号）开始，**​ **​`}`​** ​ **（右括号）结束。每个名称后跟一个**​ **​`:`​** ​ **（冒号）；'名称/值'对** 对之间使用`,`​（逗号）分隔
+
+```json
+{"name":"张三","age":23,"salary":12.3,"sex":true}
+```
+
+> 数组
+
+值的有序列表（An ordered list of values）。在大部分语言中，它被理解为数组（array）。
+
+数组是值（value）的有序集合。一个数组以`[`​（左中括号）开始，`]`​（右中括号）结束。值之间使用`,`​（逗号）分隔
+
+```json
+["hello","boy",12,12,3,true]
+```
+
+值（value）可以是双引号括起来的字符串（`string`​）、数值(`number`​)、`true`​、`false`​、 `null`​、对象（`object`​）或者数组（`array`​）。这些结构可以嵌套。
+
+### JSON 与 JS 对象的关系
+
+很多人搞不清楚 JSON 和 JS 对象的关系，甚至连谁是谁都不清楚。其实，可以这么理解：  
+**JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。**   
+如
+
+```javascript
+var obj = {a: 'Hello', b: 'World'}; //这是一个对象，注意键名也是可以使用引号包裹的
+
+var json = '{"a": "Hello", "b": "World"}'; //这是一个 JSON 字符串，本质是一个字符串
+```
+
+### JSON 和 JS 对象互转
+
+要实现从JSON字符串转换为JS对象，使用 JSON.parse() 方法：
+
+```js
+var obj = JSON.parse('{"a": "Hello", "b": "World"}'); //结果是 {a: 'Hello', b: 'World'}
+```
+
+要实现从JS对象转换为JSON字符串，使用 JSON.stringify() 方法：
+
+```js
+var json = JSON.stringify({a: 'Hello', b: 'World'}); //结果是 '{"a": "Hello", "b": "World"}'
+```
+
+## ES6特性
+
+es5和es6对于前端开发来说是经常都会使用的方法，他们为我们开发提供了很多便利的方法和写法，使我们的代码更加的优雅，以下简单总结一下es5与es6的不同。
+
+### 变量声明
+
+#### 关键字介绍
+
+##### `let`​
+
+​`let`​作用域只局限于当前代码块
+
+```js
+{
+   var a = 10
+   let b = 20
+}
+
+console.log(a)  // 输出 10
+console.log(b)  // 报错 b is not defined
+```
+
+使用`let`​声明的变量作用域不会提前
+
+```js
+console.log(a)  // 输出 undefined
+console.log(b)  // 报错 Cannot access 'b' before initialization
+
+var a = 10
+let b = 20
+```
+
+在相同的作用域下不能声明相同的变量
+
+```js
+      {
+     let a = 10
+ }
+ let a = 20
+```
+
+```js
+ var a = 10
+ let a = 20  // 报错 Identifier 'a' has already been declared
+```
+
+##### `const`​
+
+声明一个只读的常量。一旦声明，常量的值就不能改变
+
+​`const`​只声明，不赋值，就会报错，这意味着`const`​一旦声明常量，就必须立即初始化
+
+​`const`​作用域与`let`​相同，只在所在的块级作用域内有效
+
+​`const`​声明的常量不支持提升，和`let`​一样，只能在声明后使用
+
+​`const`​声明的常量，也与`let`​一样， 不可重复声明
+
+​`const`​实际保证的并不是常量的值不变，而是常量指向的内存地址不得改变
+
+* 对于简单的数据类型(数字、字符串、布尔值),值就保存在常量指向的地址，因此等同常量
+* 对于复合类型的数据(数组、对象)，常量指向的内存地址保存的只是一个指针，const只能保证指针是固定的，但是指针指向的数据结构是不是可变的，并不能保证
+
+```js
+const a = 5
+// a = 10 // 报错 Assignment to constant variable
+
+const obj = {}
+obj.a = 20 // 可执行
+console.log(obj) // 可执行 {a: 20}
+// obj = {} // 报错
+
+const arry = []
+arry.push(1) // 可执行
+arry.length = 0 // 可执行
+// arry = [] // 报错 Assignment to constant variable
+```
+
+#### 关键字适用场景
+
+使用var声明循环变量，会导致全局共用一个变量
+
+```html
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+<button>按钮</button>
+
+<script>
+    var btns = document.querySelectorAll('button')
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].onclick = function () {
+            console.log(`这是第${i}个按钮`)
+        }
+    }
+    // 此时点击任何按钮，输出都是"这是第5个按钮"
+
+    for (let j = 0; j < btns.length; j++) {
+        btns[j].onclick = function () {
+            console.log(`这是第${j}个按钮`)
+        }
+    }
+    // 把循环中的var改为let,则为正确的结果，即输出对应的按钮序号
+</script>
+```
+
+下面的例子也是for循环中全局共用同一变量的弊端
+
+```javascript
+for(var i=1;i<10;i++){
+    setTimeout(()=>{
+        console.log(i) // 输出 10个9
+    }, 100)
+}
+console.log(i) // 9
+
+for(let j=1;j<10;j++){
+    setTimeout(()=>{
+        console.log(j) // 输出 0-9
+    }, 100)
+}
+console.log(j) // 报错 j is not defined
+```
+
+**解释**
+
+​`var`​是全局作用域，有变量提升的作用，所以在for中定义一个变量，全局可以使用，循环中的每一次给变量i赋值都是给全局变量i赋值。
+
+​`let`​是块级作用域,只能在代码块中起作用，在js中一个{}中的语句我们也称为叫一个代码块，每次循环会产生一个代码块，每个代码块中的都是一个新的变量j
+
+#### 小结
+
+​`const`​一般用在需要一个模块时使用或者定义一些全局常量时使用
+
+​`let`​限制了变量的作用域，保证变量不会影响全局变量，所以尽量将`var`​改为`let`​
+
+### 箭头函数
+
+#### 箭头函数介绍
+
+ES6标准新增了一种新的函数：Arrow Function（箭头函数）。
+
+为什么叫Arrow Function？因为它的定义用的就是一个箭头
+
+```js
+let y = x => x * x
+```
+
+上面的箭头函数相当于：
+
+```javascript
+let y = function(x) {
+    return x * x;
+}
+```
+
+箭头函数相当于匿名函数，并且简化了函数定义。箭头函数有两种格式。一种像上面的，只包含一个表达式，连`{ ... }`​和`return`​都省略掉了。还有一种可以包含多条语句，这时候就不能省略`{ ... }`​和`return`​：
+
+```js
+x => {
+    if (x > 0) {
+        return x * x;
+    }
+    else {
+        return - x * x;
+    }
+}
+```
+
+如果参数不是一个，就需要用括号()括起来：
+
+```javascript
+// 两个参数:
+(x, y) => x * x + y * y;
+
+// 无参数:
+() => 3.14;
+
+// 可变参数:
+(x, y, ...rest) => {
+    var i, sum = x + y;
+    for (i=0; i<rest.length; i++) {
+        sum += rest[i];
+    }
+    return sum;
+};
+```
+
+如果要返回一个对象，就要注意，如果是单表达式，这么写的话会报错：
+
+```js
+// SyntaxError:
+x => { foo: x }
+```
+
+因为和函数体的{ ... }有语法冲突，所以要改为：
+
+```js
+// ok:
+x => ({ foo: x })
+```
+
+#### 箭头函数与匿名函数异同
+
+箭头函数看上去是匿名函数的一种简写，但实际上，箭头函数和匿名函数有个明显的区别:
+
+箭头函数的提出，主要是为了解决多层函数嵌套中this指代混乱的问题；箭头函数内部的this是词法作用域，由上下文确定。
+
+> 使用普通函数嵌套会产生this指代混乱的问题
+
+```js
+var person = {
+    age: 18,
+    getBirth: function () {
+        var bth = function () {
+          // 多层嵌套函数中，this优先寻找父级作用域对象，不存在，即指向全局window对象
+            return new Date().getFullYear() - this.age  // this.age   undefined
+        }
+        return bth()
+    }
+}
+console.log(person.getBirth()) // NaN
+```
+
+> 使用箭头函数即可解决问题
+
+```javascript
+var person = {
+    age: 18,
+    getBirth: function () {
+        var bth = ()=>{
+          // 在箭头函数中 this会寻找父级作用域的对象，找到为止
+            return new Date().getFullYear() - this.age  // this.age  18
+        }
+        return bth()
+    }
+}
+console.log(person.getBirth()) // 2002
+```
+
+#### 箭头函数不适用的场景
+
+> 作为对象的属性
+
+```javascript
+var obj = {
+    a: () => {
+        console.log(this); // window
+    }
+};
+```
+
+作为对象的属性时，this的指向则不再是对象本身了，这就造成了意想不到的结果
+
+> 不可以作为构造函数来使用
+
+```js
+var Person = (name) => { // Uncaught TypeError: Person is not a constructor
+    this.name = name;
+}
+
+var person = new Person('Jack');
+```
+
+这个特性很容易测试，如果上一条明白的话也很容易理解： 箭头函数压根就没有this，当然不能作为构造函数（如果明白构造函数new的过程的话，插一句： new的过程其实就是创建一个对象，将this指向该对象，然后执行代码初始化这个对象，最后返回）
+
+> 不可以作为原型方法
+
+同样的规则适用于原型方法（prototype method）的定义，使用箭头函数会导致运行时的执行上下文错误
+
+```js
+function Cat(name) {
+    this.name = name;
+}
+
+Cat.prototype.sayCatName = () => {
+    console.log(this === window); // => true
+    return this.name;
+};
+
+const cat = new Cat('Mew');
+cat.sayCatName(); // => undefined
+```
+
+使用传统的函数表达式就能解决问题：
+
+```js
+function Cat(name) {
+    this.name = name;
+}
+
+Cat.prototype.sayCatName = function () {
+    console.log(this === cat); // => true
+    return this.name;
+};
+
+const cat = new Cat('Mew');
+cat.sayCatName(); // => 'Mew'
+```
+
+sayCatName 变成普通函数之后，被调用时的执行上下文就会指向新创建的 cat 实例。
+
+> 不绑定arguments（如果有要使用arguments的时候可以使用rest参数代替）
+
+```js
+var foo = (val) => {
+    console.log(arguments); // Uncaught ReferenceError: arguments is not defined
+};
+foo();
+```
+
+这个特性也很好测试，但是实在要使用`arguments`​对象要怎么办呢？我们可以使用es6的另一个新特性rest参数，完美替代
+
+```js
+var foo = (...args) => {
+    console.log(args); // [1, 2, 3]
+};
+foo(1, 2, 3);
+```
+
+### JS对象嵌套函数
+
+在 `js`​ 的语法规则中，如果一个对象内存在方法，则该方法 `this`​ 指向当前对象。  
+如下所示：
+
+```js
+let obj = {
+    age: 10,
+    getAge: function () { 
+        console.log(this.age)
+    }
+}
+obj.getAge();// 10
+```
+
+若方法中再次包含函数方法，则该嵌套函数指向全局。不能获取到本对象中的属性。  
+如下所示：
+
+```js
+let obj = {
+    age: 10,
+    getAge: function () { 
+        setTimeout(function(){ alert(this.age)}, 1000)
+    }
+}
+obj.getAge();// undefined
+```
+
+可以通过如下几种办法来解决此问题：
+
+> 定义变量，保存对象 `this`​
+
+```js
+let obj = {
+  age: 10,
+  getAge: function () {
+    let self = this;
+    setTimeout(function(){ alert(self.age)}, 1000)
+  }
+}
+```
+
+> 通过箭头函数的方式
+
+由于箭头函数具有默认指向父级调用对象 obj 的特点，因此也可以解决本问题
+
+```js
+let obj = {
+  age: 10,
+  getAge: function () {
+    setTimeout(() => { alert(this.age)}, 1000)
+  }
+}
+```
+
+### 解构赋值
+
+#### 解构赋值介绍
+
+解构赋值允许你使用类似数组或对象字面量的语法将数组和对象的属性赋给各种变量。这种赋值语法极度简洁，同时还比传统的属性访问方法更为清晰。
+
+通常来说，你很可能这样访问数组中的前三个元素：
+
+```js
+var first = someArray[0];
+var second = someArray[1];
+var third = someArray[2];
+```
+
+如果使用解构赋值的特性，将会使等效的代码变得更加简洁并且可读性更高：
+
+```js
+var [first, second, third] = someArray;
+```
+
+​`SpiderMonkey`​（Firefox 的 JavaScript 引擎）已经支持解构的大部分功能，但是仍不健全。你可以通过 [bug 694100](https://bugzilla.mozilla.org/show_bug.cgi?id=694100) 跟踪解构和其它 ES6 特性在 `SpiderMonkey`​ 中的支持情况。
+
+#### 数组与迭代器的解构
+
+以上是数组解构赋值的一个简单示例，其语法的一般形式为：
+
+```shell
+[ variable1, variable2, ..., variableN ] = array;
+```
+
+这将为 variable1 到 variableN 的变量赋予数组中相应元素项的值。如果你想在赋值的同时声明变量，可在赋值语句前加入`var`​、`let`​或`const`​关键字，例如：
+
+```shell
+var [ variable1, variable2, ..., variableN ] = array;
+let [ variable1, variable2, ..., variableN ] = array;
+const [ variable1, variable2, ..., variableN ] = array;
+```
+
+事实上，用`变量`​来描述并不恰当，因为你可以对任意深度的嵌套数组进行解构：
+
+```js
+var [foo, [[bar], baz]] = [1, [[2], 3]];
+console.log(foo);  // 1
+console.log(bar);  // 2
+console.log(baz);  // 3
+```
+
+此外，你可以在对应位留空来跳过被解构数组中的某些元素：
+
+```js
+var [,,third] = ["foo", "bar", "baz"];
+console.log(third);  // "baz"
+```
+
+而且你还可以通过 “[不定参数](http://www.infoq.com/cn/articles/es6-in-depth-rest-parameters-and-defaults)” 模式捕获数组中的所有尾随元素：
+
+```js
+var [head, ...tail] = [1, 2, 3, 4];
+console.log(tail); // [2, 3, 4]
+```
+
+当访问空数组或越界访问数组时，对其解构与对其索引的行为一致，最终得到的结果都是：`undefined`​。
+
+```js
+console.log([][0]);   // undefined
+var [missing] = [];
+console.log(missing); // undefined
+```
+
+请注意，数组解构赋值的模式同样适用于任意迭代器：
+
+```js
+function* fibs() {
+      var a = 0;
+      var b = 1;
+      while (true) {
+        yield a;
+        [a, b] = [b, a + b];
+      }
+}
+var [first, second, third, fourth, fifth, sixth] = fibs();
+console.log(sixth);  // 5
+```
+
+#### 对象的解构
+
+通过解构对象，你可以把它的每个属性与不同的变量绑定，首先指定被绑定的属性，然后紧跟一个要解构的变量。
+
+```js
+var robotA = { name: "Bender" };
+var robotB = { name: "Flexo" };
+var { name: nameA } = robotA;
+var { name: nameB } = robotB;
+
+console.log(nameA);  // "Bender"
+console.log(nameB);  // "Flexo"
+```
+
+当属性名与变量名一致时，可以通过一种实用的句法简写：
+
+```js
+var { foo, bar } = { foo: "lorem", bar: "ipsum" };
+
+console.log(foo);  // "lorem"
+console.log(bar);  // "ipsum"
+```
+
+与数组解构一样，你可以随意嵌套并进一步组合对象解构：
+
+```js
+var complicatedObj = {
+  arrayProp: [
+    "Zapp",
+    { second: "Brannigan" }
+  ]
+};
+var { arrayProp: [first, { second }] } = complicatedObj;
+console.log(first);
+// "Zapp"
+console.log(second);
+// "Brannigan"
+```
+
+当你解构一个未定义的属性时，得到的值为`undefined`​：
+
+```js
+var { missing } = {};
+console.log(missing);
+// undefined
+```
+
+请注意，当你解构对象并赋值给变量时，如果你已经声明或不打算声明这些变量（亦即赋值语句前没有`let`​、`const`​或`var`​关键字），你应该注意这样一个潜在的语法错误：
+
+```shell
+{ blowUp } = { blowUp: 10 };
+// Syntax error 语法错误
+```
+
+为什么会出错？这是因为 JavaScript 语法通知解析引擎将任何以 {开始的语句解析为一个块语句（例如，`{console}`​是一个合法块语句）。解决方案是将整个表达式用一对小括号包裹：
+
+```js
+({ safe } = {});
+// No errors 没有语法错误
+```
+
+#### 解构值不是对象、数组或迭代器
+
+当你尝试解构`null`​或`undefined`​时，你会得到一个类型错误：
+
+```js
+var {blowUp} = null;
+// TypeError: null has no properties（null没有属性）
+```
+
+然而，你可以解构其它原始类型，例如：`布尔值`​、`数值`​、`字符串`​，但是你将得到`undefined`​：
+
+```js
+var {wtf} = NaN;
+console.log(wtf);
+// undefined
+```
+
+你可能对此感到意外，但经过进一步审查你就会发现，原因其实非常简单。当使用对象赋值模式时，被解构的值[需要被强制转换为对象](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-requireobjectcoercible)。大多数类型都可以被转换为对象，但`null`​和`undefined`​却无法进行转换。当使用数组赋值模式时，被解构的值一定要[包含一个迭代器](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-getiterator)。
+
+#### 默认值
+
+当你要解构的属性未定义时你可以提供一个默认值：
+
+```js
+var [missing = true] = [];
+console.log(missing);
+// true
+var { message: msg = "Something went wrong" } = {};
+console.log(msg);
+// "Something went wrong"
+var { x = 3 } = {};
+console.log(x);
+// 3
+```

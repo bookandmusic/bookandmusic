@@ -13,6 +13,13 @@ export const linux = arraySidebar([
         children: "structure",
       },
       {
+        text: "资源管理",
+        prefix: "resource/",
+        icon: "/resource.svg",
+        collapsible: true,
+        children: "structure",
+      },
+      {
         text: "服务管理",
         prefix: "service/",
         icon:"/system-service.svg",
@@ -28,7 +35,7 @@ export const linux = arraySidebar([
           {
             text: "Nginx",
             icon:"/nginx.svg",
-            link: "Nginx",
+            link: "nginx/",
           },
           {
             text: "Ansible",
@@ -47,7 +54,7 @@ export const linux = arraySidebar([
           {
             text: "Kubernetes",
             icon:"/kubernetes.svg",
-            link: "Kubernetes",
+            link: "kubernetes/",
           },
         ],
       },
