@@ -33,9 +33,18 @@ export const linux = arraySidebar([
         collapsible: true,
         children: [
           {
+            text: "Git",
+            icon:"/git.svg",
+            prefix: "git/",
+            collapsible: true,
+            children: "structure",
+          },
+          {
             text: "Nginx",
             icon:"/nginx.svg",
-            link: "nginx/",
+            prefix: "nginx/",
+            collapsible: true,
+            children: "structure",
           },
           {
             text: "Ansible",
@@ -54,7 +63,9 @@ export const linux = arraySidebar([
           {
             text: "Kubernetes",
             icon:"/kubernetes.svg",
-            link: "kubernetes/",
+            prefix: "kubernetes/",
+            collapsible: true,
+            children: "structure",
           },
         ],
       },

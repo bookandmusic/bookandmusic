@@ -17,74 +17,22 @@ export const python = arraySidebar([
         collapsible: true,
         children: [
           {
-            text: "面向对象",
-            collapsible: true,
-            children: [
-              {
-                text: "类和对象",
-                link: "python类和对象"
-              },
-              {
-                text: "魔法方法",
-                link: "python魔法方法"
-              }
-            ]
-          },
-          {
             text: "函数",
             collapsible: true,
-            children: [
-              {
-                text: "异常",
-                link: "python异常",
-              },
-              {
-                text: "内置函数",
-                link: "python内置函数"
-              },
-              {
-                text: "递归函数",
-                link: "python递归函数"
-              },
-              {
-                text: "匿名函数",
-                link: "python匿名函数"
-              },
-              {
-                text: "高阶函数",
-                link: "python高阶函数"
-              },
-              {
-                text: "装饰器",
-                link: "python装饰器"
-              },
-              {
-                text: "变量作用域",
-                link: "python变量作用域"
-              },
-              {
-                text: "内存管理",
-                link: "python内存管理"
-              },
-            ]
+            prefix:"func/",
+            children: "structure",
+          },
+          {
+            text: "面向对象",
+            collapsible: true,
+            prefix:"object/",
+            children: "structure",
           },
           {
             text: "多任务执行",
             collapsible: true,
-            children: [
-              {
-                text: "多任务机制",
-                link: "多任务机制",
-              },
-              {
-                text: "线程池和进程池",
-                link: "线程池和进程池"
-              },
-              {
-                text: "asyncio异步IO",
-                link: "asyncio异步IO"
-              },
-            ],
+            prefix:"multitask/",
+            children: "structure",
           }
         ],
       },

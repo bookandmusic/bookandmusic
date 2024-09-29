@@ -1,18 +1,15 @@
 ---
-title: stdoutCallback插件
-date: 2023-04-26T22:20:58Z
-lastmod: 2023-04-26T22:20:58Z
+created: 2023-04-26T14:20:58.000Z
 article: false
-order: 5
+order: 6
+title: stdoutCallback插件
+updated: 2024-09-29T03:08:35.000Z
 ---
-
-# stdoutCallback插件
-
-　　`stdout_callback`是Ansible Playbook中的一个回调插件，用于在执行Playbook期间向标准输出流打印信息。该插件提供了一种方式来自定义打印输出格式，并允许用户在执行期间观察Ansible任务的进度。
+`stdout_callback`是Ansible Playbook中的一个回调插件，用于在执行Playbook期间向标准输出流打印信息。该插件提供了一种方式来自定义打印输出格式，并允许用户在执行期间观察Ansible任务的进度。
 
 ## 自定义stdout_callback插件
 
-　　以下是一个示例，自定义`stdout_callback`插件,隐藏日志中的sql命令：
+以下是一个示例，自定义`stdout_callback`插件,隐藏日志中的sql命令：
 
 ```python
 import os
@@ -107,7 +104,7 @@ class CallbackModule(DefaultCallbackModule):
 
 ## ansible
 
-　　添加自定义插件到环境变量
+添加自定义插件到环境变量
 
 ```bash
 # 自定义callback插件包路径
@@ -116,17 +113,17 @@ export ANSIBLE_CALLBACK_PLUGINS="/project/plugins/callback"
 export ANSIBLE_STDOUT_CALLBACK="hidden_password"
 ```
 
-　　执行playbook
+执行playbook
 
 ```bash
 ansible-playbook -i inventory/inventory.ini mysql.yml
 ```
 
-　　输出日志中，会自动隐藏密码。
+输出日志中，会自动隐藏密码。
 
 ## ansible_runner
 
-　　使用ansible_runner执行playbook
+使用ansible_runner执行playbook
 
 > 使用最新的`ansible_runner`，因为旧版中，不允许修改`stdout_callback`插件，就必须在初始化`runner`对象后，手动修改`runner.config.env`中的环境变量`ANSIBLE_STDOUT_CALLBACK`。
 

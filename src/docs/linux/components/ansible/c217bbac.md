@@ -1,13 +1,10 @@
 ---
-title: Ansible模块
-date: 2023-04-26T22:20:45Z
-lastmod: 2023-04-26T22:20:45Z
+created: 2024-09-29T03:13:59.000Z
 article: false
 order: 4
+title: Ansible模块
+updated: 2024-09-29T03:14:57.000Z
 ---
-
-# Ansible模块
-
 ## 条件判断
 
 ### assert

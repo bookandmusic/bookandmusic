@@ -93,6 +93,10 @@ export default navbar([
     prefix: "/docs/go/",
     children: [
       {
+        text: "环境配置",
+        link:"env/",
+      },
+      {
         text: "基础语法",
         link:"base/",
       },
