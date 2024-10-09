@@ -1,17 +1,11 @@
 ---
-title: Celery任务队列
-category: [Python]  
-tag: [异步, celery, 定时, django]  
-abbrlink: 7c4e981a  
-date: 2021-10-24 02:03:05  
-updated: 2023-03-02 14:20:32
-order: 9
+created: 2023-08-03T13:37:42.000Z
+updated: 2024-10-08T15:28:01.000Z
 article: false
+order: 9
+title: Celery任务队列
 ---
-
-# Celery任务队列
-
-　　在使用Celery至异步任务处理时，如果存在多种类型的任务，并且我们希望用不同的Worker来处理不同类型的任务时，应该如何处理呢？
+在使用Celery至异步任务处理时，如果存在多种类型的任务，并且我们希望用不同的Worker来处理不同类型的任务时，应该如何处理呢？
 本文将会讲解如何利用Celery将任务分配至不同队列，并使用不同的Worker来处理指定类型的任务。
 
 ## celery app创建
@@ -309,4 +303,4 @@ celery -A celery路径 beat -l info -Q 队列
 celery -A celery路径 worker -l info -Q 队列 -c worker数
 ```
 
-　　‍
+‍

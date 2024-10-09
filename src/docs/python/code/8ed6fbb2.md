@@ -1,10 +1,12 @@
 ---
+
 title: 超时退出
 category: [Python]
 tag: []
 abbrlink: a48fc9
 date: 2021-03-08 22:38:26
 article: false
+
 ---
 
 最近在项目中调用第三方接口时候，经常会出现请求超时的情况，或者参数的问题导致调用异代码异常。针对超时异常，查询了python 相关文档，没有并发现完善的包来根据用户自定义
@@ -12,7 +14,7 @@ article: false
 
 ## 基于 signal模块实现
 
-signal包负责在Python程序内部处理信号，典型的操作包括预设信号处理函数，暂 停并等待信号，以及定时发出SIGALRM等。要注意，signal包主要是针对UNIX平台(比如Linux, MAC OS)，而Windows内核中由于对信号机制的支持不充分，所以在Windows上的Python不能发挥信号系统的功能。 
+signal包负责在Python程序内部处理信号，典型的操作包括预设信号处理函数，暂 停并等待信号，以及定时发出SIGALRM等。要注意，signal包主要是针对UNIX平台(比如Linux, MAC OS)，而Windows内核中由于对信号机制的支持不充分，所以在Windows上的Python不能发挥信号系统的功能。
 
 ```python
 import functools
@@ -75,13 +77,10 @@ task2 start
 task2 end
 ```
 
-
-
 ## 基于子线程阻塞实现
 
 原理：将要调用的功能函数放入子线程，通过设定主线程的阻塞等待时间，超时则主线程并不会等待子线程的执行。主线程退出，子线程就不存在了。
 核心就是在主线程中添加 join()方法，用于等待线程结束。join()的作用是，在子线程完成运行之前，这个子线程的父线程将会被一直阻塞.
-
 
 ```python
 import functools

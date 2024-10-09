@@ -1,13 +1,10 @@
 ---
-title: 请求与响应
-date: 2023-08-03T21:09:28Z
-lastmod: 2023-08-03T21:09:28Z
+created: 2023-08-03T13:09:28.000Z
+updated: 2024-10-08T15:05:30.000Z
 article: false
 order: 2
+title: 请求与响应
 ---
-
-# 请求与响应
-
 ## 请求
 
 > 视图处理过程中，都是接收请求，处理逻辑，返回响应
@@ -33,7 +30,7 @@ request.environ # 服务器的配置环境信息
 
 #### 路由参数
 
-　　通过把 URL 的一部分标记为 `<variable_name>` 就可以在 URL 中添加变量。标记的 部分会作为关键字参数传递给函数。通过使用 `<converter:variable_name>` ，可以 选择性的加上一个转换器，为变量指定规则。请看下面的例子:
+通过把 URL 的一部分标记为 `<variable_name>` 就可以在 URL 中添加变量。标记的 部分会作为关键字参数传递给函数。通过使用 `<converter:variable_name>` ，可以 选择性的加上一个转换器，为变量指定规则。请看下面的例子:
 
 ```python
 from markupsafe import escape
@@ -54,7 +51,7 @@ def show_subpath(subpath):
     return 'Subpath %s' % escape(subpath)
 ```
 
-　　转换器类型：
+转换器类型：
 
 |类型|功能|
 | ----| -----------------------------------|
@@ -112,7 +109,7 @@ if __name__ == '__main__':
 
 > 一般是 `POST`、`PUT`请求提交的数据，在请求体中存在
 
-　　`request.json` 属性，只能接收处理json格式的数据，得到字典; 如果传参不是json格式，得到`None`
+`request.json` 属性，只能接收处理json格式的数据，得到字典; 如果传参不是json格式，得到`None`
 
 ```python
 data = request.json # 字典、None
@@ -139,13 +136,13 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7000, debug=True)
 ```
 
-　　`request.get_json()` 方法， 只能接收处理json格式的数据，得到字典; 如果传参不是json格式，得到`None`
+`request.get_json()` 方法， 只能接收处理json格式的数据，得到字典; 如果传参不是json格式，得到`None`
 
 ```python
 data = request.get_json()
 ```
 
-　　`request.data` 属性，可以处理所有的非表单数据，但是，如果传递的是 json字符串，需要使用 `json.loads()`解析，得到字典数据
+`request.data` 属性，可以处理所有的非表单数据，但是，如果传递的是 json字符串，需要使用 `json.loads()`解析，得到字典数据
 
 ```python
 import json
@@ -174,7 +171,7 @@ if __name__ == '__main__':
     app.run(host='0.0.0.0', port=7000, debug=True)
 ```
 
-　　`request.get_data()`方法，可以处理所有的非表单数据，但是，如果传递的是 json字符串，需要使用 `json.loads()`解析，得到字典数据
+`request.get_data()`方法，可以处理所有的非表单数据，但是，如果传递的是 json字符串，需要使用 `json.loads()`解析，得到字典数据
 
 ```python
  data = request.get_data()
@@ -222,21 +219,21 @@ if __name__ == '__main__':
     app.run()
 ```
 
-　　**文件名校验**
+**文件名校验**
 
 > `secure_filename()`函数到底是有什么用？有一条原 则是**“永远不要信任用户输入”**。这条原则同样适用于已上传文件的文件名。所有提 交的表单数据可能是伪造的，文件名也可以是危险的。此时要谨记：**在把文件保存到 文件系统之前总是要使用这个函数对文件名进行安检**。
 
-　　**问题**
+**问题**
 
-　　用`secure_filename`获取中文文件名时,中文会被省略。
+用`secure_filename`获取中文文件名时,中文会被省略。
 
-　　**原因**
+**原因**
 
-　　`secure_filename()`函数只返回ASCII字符，非ASCII字符会被过滤掉。
+`secure_filename()`函数只返回ASCII字符，非ASCII字符会被过滤掉。
 
-　　**解决方案**
+**解决方案**
 
-　　使用第三方库（`pypinyin`)，将中文名转换成拼音
+使用第三方库（`pypinyin`)，将中文名转换成拼音
 
 ```python
 from pypinyin import lazy_pinyin
@@ -244,9 +241,9 @@ from pypinyin import lazy_pinyin
 filename = secure_filename(''.join(lazy_pinyin(file.filename)))
 ```
 
-　　使用`uuid`模块重命名文件名
+使用`uuid`模块重命名文件名
 
-　　`python`的`uuid`模块提供`UUID`类和函数`uuid1()`, `uuid3()`, `uuid4()`, uuid5() 来生成1, 3, 4, 5各个版本的UUID ( 需要注意的是: python中没有`uuid2()`这个函数)。
+`python`的`uuid`模块提供`UUID`类和函数`uuid1()`, `uuid3()`, `uuid4()`, uuid5() 来生成1, 3, 4, 5各个版本的UUID ( 需要注意的是: python中没有`uuid2()`这个函数)。
 
 ```python
 uuid.uuid1([node[, clock_seq]])  # 基于时间戳
@@ -274,9 +271,9 @@ uuid.uuid5(namespace, name)# 基于名字的SHA-1散列值
 UUID('a0d8cf44-9288-5961-b9f3-b1e5608c41d9')
 ```
 
-　　不使用`secure_filename()`函数进行文件名检测（不推荐）
+不使用`secure_filename()`函数进行文件名检测（不推荐）
 
-　　自定义工具（耗时）
+自定义工具（耗时）
 
 ## 响应
 
@@ -286,7 +283,7 @@ UUID('a0d8cf44-9288-5961-b9f3-b1e5608c41d9')
 
 #### 字符串响应
 
-　　如果返回值是一个字符串，那么会被 转换为一个包含作为响应体的字符串、一个 `200 OK` 出错代码 和一个 *text/html* 类型的响应对象。
+如果返回值是一个字符串，那么会被 转换为一个包含作为响应体的字符串、一个 `200 OK` 出错代码 和一个 *text/html* 类型的响应对象。
 
 ```python
 @app.route('/')
@@ -298,9 +295,9 @@ def index():
 
 #### 模板响应
 
-　　使用 `render_template()` 方法可以渲染模板，你只要提供模板名称和需要 作为参数传递给模板的变量就行了。
+使用 `render_template()` 方法可以渲染模板，你只要提供模板名称和需要 作为参数传递给模板的变量就行了。
 
-　　`app.py`
+`app.py`
 
 ```python
 import os
@@ -321,9 +318,9 @@ if __name__ == '__main__':
     app.run()
 ```
 
-　　`templates/index.html`
+`templates/index.html`
 
-```jinja
+```jinja2
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -342,7 +339,7 @@ if __name__ == '__main__':
 
 #### 重定向
 
-　　`redirect(location, code=302, Response=None)`： 返回响应对象（WSGI 应用程序），如果被调用，该对象将客户端重定向到目标位置。支持代码为 301、302、303、305、307 和 308。
+`redirect(location, code=302, Response=None)`： 返回响应对象（WSGI 应用程序），如果被调用，该对象将客户端重定向到目标位置。支持代码为 301、302、303、305、307 和 308。
 
 ```python
 from flask import abort, redirect, url_for
@@ -358,7 +355,7 @@ def login():
 
 > `url_for()` 函数用于构建指定函数的 URL。它把函数名称作为第一个 参数。它可以接受任意个关键字参数，每个关键字参数对应 URL 中的变量。未知变量 将添加到 URL 中作为查询参数。
 
-　　例如，这里我们使用 `test_request_context()`方法来尝试使用 `url_for()` 。 `test_request_context()` 告诉 Flask 正在处理一个请求。
+例如，这里我们使用 `test_request_context()`方法来尝试使用 `url_for()` 。 `test_request_context()` 告诉 Flask 正在处理一个请求。
 
 ```python
 from markupsafe import escape
@@ -385,7 +382,7 @@ with app.test_request_context():
 
 ```
 
-　　输出结果：
+输出结果：
 
 ```python
 /
@@ -398,7 +395,7 @@ with app.test_request_context():
 
 #### 元组
 
-　　如果返回的是一个元组，那么元组中的项目可以提供额外的信息。元组中必须至少 包含一个项目，且项目应当由 `(response, status)` 、 `(response, headers)` 或者 `(response, status, headers)` 组成。 `status` 的值会重载状态代码， `headers` 是一个由额外头部值组成的列表 或字典。
+如果返回的是一个元组，那么元组中的项目可以提供额外的信息。元组中必须至少 包含一个项目，且项目应当由 `(response, status)` 、 `(response, headers)` 或者 `(response, status, headers)` 组成。 `status` 的值会重载状态代码， `headers` 是一个由额外头部值组成的列表 或字典。
 
 ```python
 from flask import Flask
@@ -417,7 +414,7 @@ def user():
 
 #### Json
 
-　　JSON 格式的响应是常见的，用 Flask 写这样的 API 是很容易上手的。如果从视图 返回一个 `dict` ，那么它会被转换为一个 JSON 响应。
+JSON 格式的响应是常见的，用 Flask 写这样的 API 是很容易上手的。如果从视图 返回一个 `dict` ，那么它会被转换为一个 JSON 响应。
 
 ```python
 @app.route("/user/")
@@ -429,7 +426,7 @@ def user():
     return json_dict, 200
 ```
 
-　　如果 `dict` 还不能满足需求，还需要创建其他类型的 JSON 格式响应，可以使用 [`jsonify()`](https://dormousehole.readthedocs.io/en/latest/api.html#flask.json.jsonify) 函数。该函数会序列化任何支持的 JSON 数据类型。
+如果 `dict` 还不能满足需求，还需要创建其他类型的 JSON 格式响应，可以使用 [`jsonify()`](https://dormousehole.readthedocs.io/en/latest/api.html#flask.json.jsonify) 函数。该函数会序列化任何支持的 JSON 数据类型。
 
 ```python
 from flask import Flask, jsonify
@@ -464,7 +461,7 @@ if __name__ == '__main__':
 
 ### 自定义响应
 
-　　我们可以使用*Flask*提供的`make_response` 方法来自定义自己的`response`对象
+我们可以使用*Flask*提供的`make_response` 方法来自定义自己的`response`对象
 
 #### 返回数据
 

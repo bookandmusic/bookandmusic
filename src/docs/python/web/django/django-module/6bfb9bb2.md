@@ -1,20 +1,17 @@
 ---
-title: 图片上传
-date: 2023-08-03T21:14:06Z
-lastmod: 2023-08-03T21:14:06Z
+created: 2023-08-03T13:14:06.000Z
+updated: 2024-10-08T15:27:11.000Z
 article: false
 order: 5
+title: 图片上传
 ---
-
-# 图片上传
-
-　　static 和 media 都是存放文件的地方，但是又有区别，以下是两个文件夹的区别和用法
+static 和 media 都是存放文件的地方，但是又有区别，以下是两个文件夹的区别和用法
 
 ## static
 
-　　static 是静态文件，主要存的是 CSS, JavaScript, 网站 logo 等不变的文件。
+static 是静态文件，主要存的是 CSS, JavaScript, 网站 logo 等不变的文件。
 
-　　配置 `settings.py`
+配置 `settings.py`
 
 ```python
 STATIC_URL = '/static/'  # 静态文件别名（相对路径） 和 绝对路径
@@ -24,13 +21,13 @@ STATICFILES_DIRS = [
 # STATIC_ROOT 配置部署的时候才用
 ```
 
-　　在项目中将模板层用到的静态文件都放入该文件夹中
+在项目中将模板层用到的静态文件都放入该文件夹中
 
 ## media
 
-　　media 主要用来保存用户上传的文件，例如图片等
+media 主要用来保存用户上传的文件，例如图片等
 
-　　配置 `settings.py`
+配置 `settings.py`
 
 ```python
 MEDIA_URL = "/media/"   # 媒体文件别名(相对路径) 和 绝对路径
@@ -39,7 +36,7 @@ MEDIA_ROOT = [
 ]
 ```
 
-　　如果需要使用Django服务展示图片，则在项目的主路由中对使用 static静态服务器展示图片信息。
+如果需要使用Django服务展示图片，则在项目的主路由中对使用 static静态服务器展示图片信息。
 
 ```python
 from django.conf.urls.static import static
@@ -57,7 +54,7 @@ urlpatterns = [
 
 ### 模型
 
-　　定义包含图片字段的模型类
+定义包含图片字段的模型类
 
 ```python
 class Goods(models.Model):
@@ -79,7 +76,7 @@ class Goods(models.Model):
 
 #### 添加页面
 
-```jinja
+```jinjia2
 <form action="{% url 'goods:create' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     名称:<input type="text" name="name"> <br>
@@ -93,7 +90,7 @@ class Goods(models.Model):
 
 #### 展示页面
 
-```jinja
+```jinjia2
 <table>
     {% for good in goods %}
         <tr>
@@ -153,7 +150,7 @@ class IndexView(View):
 
 ### 路由
 
-　　在子应用正常配置路由
+在子应用正常配置路由
 
 ```python
 from django.urls import path
@@ -166,7 +163,7 @@ urlpatterns = [
 ]
 ```
 
-　　在主路由中包含子路由即可。
+在主路由中包含子路由即可。
 
 ```python
 from django.conf.urls.static import static

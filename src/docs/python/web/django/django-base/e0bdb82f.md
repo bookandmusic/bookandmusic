@@ -1,14 +1,11 @@
 ---
-title: ORM模型类
-date: 2023-08-03T21:06:48Z
-lastmod: 2023-08-03T21:06:48Z
+created: 2023-08-03T13:06:48.000Z
+updated: 2024-10-08T15:26:13.000Z
 article: false
 order: 7
+title: ORM模型类
 ---
-
-# ORM模型类
-
-**`ORM`** 全拼`Object-Relation Mapping`，中文意为 **`对象-关系映射`**。在`MVC`/`MVT`设计模式中的`Model`模块中都包括`ORM`。
+**​`ORM`​** 全拼`Object-Relation Mapping`，中文意为 **​`对象-关系映射`​**。在`MVC`/`MVT`设计模式中的`Model`模块中都包括`ORM`。
 
 ## ORM介绍
 
@@ -341,7 +338,7 @@ class MyModel(models.Model):
 
 ###### `FilePathField.match`
 
-可选的。一个正则表达式，作为一个字符串，`FilePathField`将使用它来过滤文件名。注意，正则表达式将应用于基本文件名，而不是完整路径。示例:**`foo.*\.txt$`** 。它将匹配一个名为`foo23.txt`的文件，但不匹配`bar.txt`或`foo23.png`。
+可选的。一个正则表达式，作为一个字符串，`FilePathField`将使用它来过滤文件名。注意，正则表达式将应用于基本文件名，而不是完整路径。示例:**​`foo.*\.txt$`​** 。它将匹配一个名为`foo23.txt`的文件，但不匹配`bar.txt`或`foo23.png`。
 
 ###### `FilePathField.recursive`
 
