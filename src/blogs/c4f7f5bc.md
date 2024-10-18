@@ -7,7 +7,7 @@ tags:
 created: 2024-07-08T01:53:23.000Z
 updated: 2024-07-09T07:58:05.000Z
 ---
-虽然 WSL (Win­dows Sub­sys­tem for Linux) 可以直接访问 Win­dows 下的文件，但是因为文件权限的问题，把需要在 WSL 中使用的文件放在 WSL 的用户主目录是最好的解决方案，没有之一。为了不撑爆系统盘，除了修改 Win­dows 应用安装位置，还可以把 WSL 整个安装目录进行转移，使用 wsl --export 和 wsl --import 这两个命令可以对 WSL 进行打包再自定义目录安装，就相当于转移。我以为这已经是相当完美的解决方案了，但最近发现了一款非常实用的 WSL 管理软件：[LxRunOffline](https://github.com/DDoSolitary/LxRunOffline)，它可以安装任意发行版到任意目录、转移已安装的 WSL 目录、备份 WSL、设置默认用户和修改环境变量等操作，完全碾压 wsl、wslconfig 这些简陋原生管理命令。
+[LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) 是一款用于管理 Windows 10 和 Windows 11 上的 Windows Subsystem for Linux (WSL) 实例的命令行工具。它允许用户在不启动 WSL 的情况下，离线管理 Linux 发行版。通过 LxRunOffline，用户可以安装、卸载、注册、导出、导入和克隆 WSL 实例，支持多种 Linux 发行版，如 Ubuntu、Debian、Fedora 等。此外，它还可以方便地将现有的 WSL 实例移动到不同的驱动器或目录，或者备份当前的 WSL 环境到 tar 文件中。该工具适合需要更灵活、更精细管理 WSL 实例的高级用户和开发者。
 
 ## 安装 LxRunOffline
 
