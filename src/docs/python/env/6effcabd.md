@@ -1,9 +1,9 @@
 ---
-created: 2023-07-29T00:21:13.000Z
+date: 2023-07-29 00:21:13
 article: false
 order: 2
 title: pypi镜像
-updated: 2024-09-29T03:18:44.000Z
+updated: 2024-09-29 03:18:44
 ---
 ### 镜像源
 

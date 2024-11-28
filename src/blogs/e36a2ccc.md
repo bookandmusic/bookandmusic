@@ -5,8 +5,8 @@ tags:
   - OSI
   - TCP
   - IP
-created: 2024-07-09T07:26:12.000Z
-updated: 2024-07-09T07:38:31.000Z
+date: 2024-07-09 07:26:12
+updated: 2024-07-09 07:38:31
 ---
 本文主要介绍了计算机网络中常用的两种网络协议模型——OSI七层模型和TCP/IP四层模型。其中，OSI模型包括七个层次，分别为应用层、表示层、会话层、传输层、网络层、数据链路层和物理层，每个层次都有其特定的功能和任务。而TCP/IP模型则是将OSI模型的七层简化为了四层，即应用层、传输层、网络层和网络接口层，更具有实用性和可操作性。
 
@@ -15,7 +15,7 @@ updated: 2024-07-09T07:38:31.000Z
 七层模型，亦称 OSI（Open System Interconnection）。参考模型是国际标准化组织（ISO）制定的一个用于计算机或通信系统间互联的标准体系，一般称为 OSI 参考模型或七层模型。
 它是一个七层的、抽象的模型体，不仅包括一系列抽象的术语或概念，也包括具体的协议。
 
-​![09014648_64fb5e08ce7bd34239](assets/net-img-09014648_64fb5e08ce7bd34239-20240709152737-rxe8b10.jpg)​
+​![09014648_64fb5e08ce7bd34239](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/6091abd913f7910b02173b9fe07ea536.webp)​
 
 ### 7. 应用层
 
@@ -77,7 +77,7 @@ TCP/IP（Transmission Control Protocol/Internet Protocol，**传输控制协议 
 
 这个图真的超详细，建议多看！！！！！
 
-​![20201028134158932](assets/net-img-20201028134158932-20240709152647-lasgotm.png)​
+​![20201028134158932](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/8c8baf7d190451f918421d8712fede58.png)​
 
 * 应用层的主要协议有 Telnet、FTP、SMTP 等，是用来接收来自传输层的数据或者按不同应用要求与方式将数据传输至传输层；
 * 传输层的主要协议有 UDP、TCP，是使用者使用平台和计算机信息网内部数据结合的通道，可以实现数据传输与数据共享；
@@ -94,7 +94,7 @@ TCP/IP 协议在一定程度上参考了 OSI 的体系结构。OSI 模型共有�
 
 只有四层体系结构的 TCP/IP 协议，与有七层体系结构的 OSI 相比要简单了不少，也正是这样，TCP/IP 协议在实际的应用中**效率更高，成本更低**
 
-​![20201028140048366](assets/net-img-20201028140048366-20240709152647-k2natet.jpg)​
+​![20201028140048366](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/55769b411f23112ebf742d639a04a1c3.jpg)​
 
 ### TCP/IP 协议中的四个层次
 

@@ -1,9 +1,9 @@
 ---
-created: 2023-04-26T14:18:52.000Z
+date: 2023-04-26 14:18:52
 article: false
 order: 2
 title: Ansible变量
-updated: 2024-09-29T03:03:49.000Z
+updated: 2024-09-29 03:03:49
 ---
 我们来说明ansible中变量（不包含role中的变量）用法。
 

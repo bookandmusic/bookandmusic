@@ -4,8 +4,8 @@ category: 工具软件
 tags:
   - Linux
   - Mac
-created: 2024-07-08T01:54:05.000Z
-updated: 2024-07-09T08:01:37.000Z
+date: 2024-07-08 01:54:05
+updated: 2024-07-09 08:01:37
 ---
 本文主要介绍了如何通过SSH免密配置来实现Hadoop环境的搭建。首先需要了解SSH的概念及其作用，然后按照文中所述的步骤进行操作即可完成SSH免密配置。接下来，文章详细讲解了如何使用Hadoop进行环境配置，其中包括设置环境变量、配置core-site和hdfs-site文件、初始化HDFS的Namenode以及进行测试与验证。在实际操作中可能会遇到的一些问题，也提供了相应的解决方案。
 
@@ -115,7 +115,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_331.jdk/Contents/Hom
 hdfs namenode -format
 ```
 
-​​​![UtMgIk](assets/net-img-202407051025105-20240709160210-jvdxjt0.png)​
+​​​![UtMgIk](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/18cf072093a2673b5760a1d67000d664.png)​
 
 ## 测试与验证
 
@@ -127,7 +127,7 @@ bash $HADOOP_HOME/sbin/start-dfs.sh
 
 浏览器输入 `http://localhost:50070`，出现下面界面则代表启动成功
 
-​![Qjrnv3](assets/net-img-202407051025107-20240709160210-9pfi82y.png)​
+​![Qjrnv3](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/e66abef8d0cee2ca4d33be2ab144bc2c.png)​
 
 ### 查看 hdfs report
 
@@ -135,7 +135,7 @@ bash $HADOOP_HOME/sbin/start-dfs.sh
 hdfs dfsadmin -report
 ```
 
-​![5QmIl7](assets/net-img-202407051025108-20240709160210-9iksvh4.png)​
+​![5QmIl7](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/4eb3d966e9992c1afd0d92ad4dae2575.png)​
 
 ### 启动 yarn
 
@@ -145,7 +145,7 @@ bash $HADOOP_HOME/sbin/start-yarn.sh
 
 浏览器输入 `http://localhost:8088`，出现下面界面则代表启动成功
 
-​![DI1Go8](assets/net-img-202407051025109-20240709160211-mlnfysy.png)​
+​![DI1Go8](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/b8e7a243957cc0cbd3549cdb98f6b816.png)​
 
 > 当然，也可以使用 `bash $HADOOP_HOME/sbin/start-all.sh`命令管理
 

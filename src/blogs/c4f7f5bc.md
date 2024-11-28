@@ -4,8 +4,8 @@ category: 工具软件
 tags:
   - Windows
   - WSL
-created: 2024-07-08T01:53:23.000Z
-updated: 2024-07-09T07:58:05.000Z
+date: 2020-04-11 00:00:27
+updated: 2023-03-02 22:24:41
 ---
 [LxRunOffline](https://github.com/DDoSolitary/LxRunOffline) 是一款用于管理 Windows 10 和 Windows 11 上的 Windows Subsystem for Linux (WSL) 实例的命令行工具。它允许用户在不启动 WSL 的情况下，离线管理 Linux 发行版。通过 LxRunOffline，用户可以安装、卸载、注册、导出、导入和克隆 WSL 实例，支持多种 Linux 发行版，如 Ubuntu、Debian、Fedora 等。此外，它还可以方便地将现有的 WSL 实例移动到不同的驱动器或目录，或者备份当前的 WSL 环境到 tar 文件中。该工具适合需要更灵活、更精细管理 WSL 实例的高级用户和开发者。
 

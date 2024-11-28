@@ -1,9 +1,9 @@
 ---
-created: 2023-04-26T14:20:58.000Z
+date: 2023-04-26 14:20:58
 article: false
 order: 6
 title: stdoutCallback插件
-updated: 2024-09-29T03:08:35.000Z
+updated: 2024-09-29 03:08:35
 ---
 `stdout_callback`是Ansible Playbook中的一个回调插件，用于在执行Playbook期间向标准输出流打印信息。该插件提供了一种方式来自定义打印输出格式，并允许用户在执行期间观察Ansible任务的进度。
 

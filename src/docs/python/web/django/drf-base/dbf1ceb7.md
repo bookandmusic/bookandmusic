@@ -1,6 +1,6 @@
 ---
-created: 2023-08-03T13:14:26.000Z
-updated: 2024-10-08T15:28:26.000Z
+date: 2023-08-03 13:14:26
+updated: 2024-10-08 15:28:26
 article: false
 order: 1
 title: 后端跨域

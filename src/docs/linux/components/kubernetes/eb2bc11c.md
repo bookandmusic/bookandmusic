@@ -1,11 +1,11 @@
 ---
-created: 2024-09-29T01:45:07.000Z
+date: 2024-09-29 01:45:07
 article: false
 order: 1
 tags:
   - Kubernetes
 title: Kubernets介绍
-updated: 2024-09-29T01:47:09.000Z
+updated: 2024-09-29 01:47:09
 ---
 ## 应用部署方式演变
 

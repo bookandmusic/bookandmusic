@@ -1,6 +1,6 @@
 ---
-created: 2023-08-03T13:14:06.000Z
-updated: 2024-10-08T15:27:11.000Z
+date: 2023-08-03 13:14:06
+updated: 2024-10-08 15:27:11
 article: false
 order: 5
 title: 图片上传
@@ -76,7 +76,7 @@ class Goods(models.Model):
 
 #### 添加页面
 
-```jinjia2
+```jinja2
 <form action="{% url 'goods:create' %}" method="post" enctype="multipart/form-data">
     {% csrf_token %}
     名称:<input type="text" name="name"> <br>
@@ -90,7 +90,7 @@ class Goods(models.Model):
 
 #### 展示页面
 
-```jinjia2
+```jinja2
 <table>
     {% for good in goods %}
         <tr>

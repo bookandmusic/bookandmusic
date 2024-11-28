@@ -14,8 +14,8 @@ head:
       content: codeva-K0eh4YtP4t
 
 # Special thank to @mo7
-bgImage: https://file.mo7.cc/api/public/bz
-heroFullScreen: true
+bgImage: https://random.bookandmusic.cn/api/random-image
+heroFullScreen: false
 
 footer: '<a href="http://beian.miit.gov.cn/" rel="noopener noreferrer" target="_blank">备案号: 京ICP备2021028097号</a> | <a href="/about/">关于网站</a>'
 ---

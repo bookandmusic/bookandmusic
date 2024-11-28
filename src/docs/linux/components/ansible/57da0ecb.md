@@ -1,9 +1,9 @@
 ---
-created: 2023-04-26T14:17:49.000Z
+date: 2023-04-26 14:17:49
 article: false
 order: 1
 title: Ansible入门
-updated: 2024-09-29T03:03:15.000Z
+updated: 2024-09-29 03:03:15
 ---
 ## Ansible概念
 

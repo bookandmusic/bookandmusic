@@ -1,8 +1,8 @@
 ---
 title: Vite 和 Vue Cli 对比
 category: 前端
-created: 2024-01-29T07:41:51.000Z
-updated: 2024-07-09T08:28:17.000Z
+date: 2024-01-29 07:41:51
+updated: 2024-07-09 08:28:17
 ---
 Vite 和 Vue Cli 可以是师出同门，都属于 Vue 整个团队的产物，他们的功能也非常相似，都是一个提供基本项目脚手架和开发服务器的构建工具。那么在这里就有几个问题需要讨论：
 
@@ -34,7 +34,7 @@ Vue Cli 的 Webpack 的工作方式是，它通过解析应用程序中的每一
 
 Vite 不捆绑应用服务器端。相反，它依赖于浏览器对 ES6 Modules 的原生支持，浏览器直接通过 HTTP 请求 JavaScript 模块，并且在运行时处理，而对于例如 Sass、.vue 文件等则单独采用插件处理，并提供静态服务。这样耗时的大头 JavaScript 模块处理就被单独剥离了出来，利用浏览器高效处理，并且对于文件的多少，影响并不大，这样消耗的时间就更少。我们可以沿用之前章节中的图来总结这种模式区别，如图所示。
 
-​![net-img-2e1386bc85cf49139aa26cb8c5a12960tplv-k3u1fbpfcp-zoom-in-crop-mark1512000-20240129154206-qchhsaw](assets/net-img-net-img-2e1386bc85cf49139aa26cb8c5a12960tplv-k3u1fbpfcp-zoom-in-crop-mark1512000-20240129154206-qchhsaw-20240709162856-uco8lec.awebp)​
+​![net-img-2e1386bc85cf49139aa26cb8c5a12960tplv-k3u1fbpfcp-zoom-in-crop-mark1512000-20240129154206-qchhsaw](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/d1bc49af4da19ca373d4d4f7c1bd5ff1.webp)​
 
 所以总结下来，在开发模式下，Vite 显然要比 Vue Cli 性能强，生产模式下相差不大。
 

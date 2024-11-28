@@ -1,12 +1,12 @@
 ---
-created: 2024-08-22T01:22:59.000Z
+date: 2024-08-22 01:22:59
 article: false
 order: 2
 title: 部署集群之Minikube
 tags:
   - Kubernetes
   - Minikube
-updated: 2024-09-29T01:49:56.000Z
+updated: 2024-09-29 01:49:56
 ---
 > minikube 是本地 Kubernetes，专注于简化 Kubernetes 的学习和开发。
 

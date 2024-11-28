@@ -1,9 +1,9 @@
 ---
-created: 2024-09-29T02:02:03.000Z
+date: 2024-09-29 02:02:03
 article: false
 order: 11
 title: DashBoard
-updated: 2024-09-29T02:40:20.000Z
+updated: 2024-09-29 02:40:20
 ---
 之前在kubernetes中完成的所有操作都是通过命令行工具kubectl完成的。其实，为了提供更丰富的用户体验，kubernetes还开发了一个基于web的用户界面（Dashboard）。用户可以使用Dashboard部署容器化的应用，还可以监控应用的状态，执行故障排查以及管理kubernetes中各种资源。
 

@@ -1,6 +1,6 @@
 ---
-created: 2023-08-03T13:23:21.000Z
-updated: 2024-10-08T03:03:22.000Z
+date: 2023-08-03 13:23:21
+updated: 2024-10-08 03:03:22
 article: false
 order: 8
 tags:

@@ -1,9 +1,9 @@
 ---
-created: 2023-08-03T13:22:32.000Z
+date: 2023-08-03 13:22:32
 article: false
 order: 2
 title: 线程池和进程池
-updated: 2024-09-29T05:54:32.000Z
+updated: 2024-09-29 05:54:32
 ---
 Python中已经有了threading模块，为什么还需要线程池呢，线程池又是什么东西呢？
 
