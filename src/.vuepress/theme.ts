@@ -11,15 +11,15 @@ export default hopeTheme({
     email: "lsf_2012@163.com"
   },
   blog: {
-    avatar: "https://cdn.jsdelivr.net/gh/bookandmusic/static/site/2024-11/507aa512c80594479b9abf8119430ee8.png",
+    avatar: "https://jsd.vxo.im/gh/bookandmusic/static/site/2024-11/507aa512c80594479b9abf8119430ee8.png",
   },
   iconAssets: "fontawesome-with-brands",
 
-  logo: "https://cdn.jsdelivr.net/gh/bookandmusic/static/site/2024-11/dcb215b7f608a9dd29989286312446d4.webp",
+  logo: "https://jsd.vxo.im/gh/bookandmusic/static/site/2024-11/dcb215b7f608a9dd29989286312446d4.webp",
 
   pure: true,
 
-  favicon: "https://cdn.jsdelivr.net/gh/bookandmusic/static/site/2024-11/dcb215b7f608a9dd29989286312446d4.webp",
+  favicon: "https://jsd.vxo.im/gh/bookandmusic/static/site/2024-11/dcb215b7f608a9dd29989286312446d4.webp",
 
   repo: "bookandmusic/docs",
 

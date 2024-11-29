@@ -115,7 +115,7 @@ export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_331.jdk/Contents/Hom
 hdfs namenode -format
 ```
 
-​​​![UtMgIk](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/18cf072093a2673b5760a1d67000d664.png)​
+​​​![UtMgIk](https://jsd.vxo.im/gh/bookandmusic/static/image/2024-11/18cf072093a2673b5760a1d67000d664.png)​
 
 ## 测试与验证
 
@@ -127,7 +127,7 @@ bash $HADOOP_HOME/sbin/start-dfs.sh
 
 浏览器输入 `http://localhost:50070`，出现下面界面则代表启动成功
 
-​![Qjrnv3](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/e66abef8d0cee2ca4d33be2ab144bc2c.png)​
+​![Qjrnv3](https://jsd.vxo.im/gh/bookandmusic/static/image/2024-11/e66abef8d0cee2ca4d33be2ab144bc2c.png)​
 
 ### 查看 hdfs report
 
@@ -135,7 +135,7 @@ bash $HADOOP_HOME/sbin/start-dfs.sh
 hdfs dfsadmin -report
 ```
 
-​![5QmIl7](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/4eb3d966e9992c1afd0d92ad4dae2575.png)​
+​![5QmIl7](https://jsd.vxo.im/gh/bookandmusic/static/image/2024-11/4eb3d966e9992c1afd0d92ad4dae2575.png)​
 
 ### 启动 yarn
 
@@ -145,7 +145,7 @@ bash $HADOOP_HOME/sbin/start-yarn.sh
 
 浏览器输入 `http://localhost:8088`，出现下面界面则代表启动成功
 
-​![DI1Go8](https://cdn.jsdelivr.net/gh/bookandmusic/static/image/2024-11/b8e7a243957cc0cbd3549cdb98f6b816.png)​
+​![DI1Go8](https://jsd.vxo.im/gh/bookandmusic/static/image/2024-11/b8e7a243957cc0cbd3549cdb98f6b816.png)​
 
 > 当然，也可以使用 `bash $HADOOP_HOME/sbin/start-all.sh`命令管理
 
